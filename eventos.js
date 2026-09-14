@@ -21,7 +21,7 @@ const bancoDeEventos = {
         ]
     },
     4: {
-        texto: "M.O.N.O.: Registro de áudio recuperado. É a voz da Dra. Elena: <i>'Não podemos levá-la, não há oxigênio para uma Sequóia na cápsula!'</i> Enquanto processo o arquivo, meu processador entra em superaquecimento devido ao estresse de dados.",
+        texto: "M.O.N.O.: Registro de áudio recuperado. É a voz da Dra. Elena: <i>'Não podemos levá-la, não há oxigênio para uma Sequóia na cápsula!'</i> Enquanto processo o arquivo, meu computador entra em superaquecimento devido ao estresse de dados.",
         opcoes: [
             { texto: "Desviar energia para resfriar meus bancos de dados (-20 Energia)", efeito: { energia: -20, agua: 0, saude: -5 }, feedback: "Meu sistema resfriou, mas a falta de luz artificial por algumas horas estressou as folhas." },
             { texto: "Deletar os registros de voz para liberar RAM (+15 Energia)", efeito: { energia: 15, agua: 0, saude: 0 }, feedback: "Memória limpa. As vozes dos meus criadores sumiram para sempre, mas meu processamento está estável." }
@@ -37,7 +37,7 @@ const bancoDeEventos = {
     6: {
         texto: "M.O.N.O.: Um fungo marciano endêmico começou a se proliferar rapidamente na base da terra da Gênesis. Ele está se alimentando dos nutrientes vitais da raiz e emitindo um gás avermelhado.",
         opcoes: [
-            { texto: "Saturar o solo com água oxigenada para afogar o fungo (-25 Água)", mapping: { energia: 0, agua: -25, saude: +5 }, feedback: "O fungo recuou devido ao excesso de umidade. A raiz absorveu o líquido." },
+            { texto: "Saturar o solo com água oxigenada para afogar o fungo (-25 Água)", efeito: { energia: 0, agua: -25, saude: +5 }, feedback: "O fungo recuou devido ao excesso de umidade. A raiz absorveu o líquido." },
             { texto: "Irradiar a base da árvore com luz UV de alta intensidade (-20 Energia)", efeito: { energia: -20, agua: 0, saude: -10 }, feedback: "A radiação eliminou o fungo, mas acabou queimando parte do tecido vegetal sensível." }
         ]
     },
@@ -59,7 +59,7 @@ const bancoDeEventos = {
         texto: "M.O.N.O.: Uma mensagem oficial chega à caixa de entrada: <i>'M.O.N.O., descobrimos que o colapso na Terra foi total. Se a Sequóia morrer, não há plano B'</i>. Se eu possuísse sentimentos, a pressão seria imensa.",
         opcoes: [
             { texto: "Forçar overclock do gerador térmico sacrificando água (-15 Água)", efeito: { energia: 25, agua: -15, saude: 0 }, feedback: "Usei vapor d'água sob alta pressão. Consegui uma carga massiva de bateria." },
-            { texto: "Acceptar a oscilação natural da rede elétrica", efeito: { energia: -15, agua: 0, saude: -5 }, feedback: "A oscilação causou uma queda repentina no aquecimento. A árvore sofreu pequenas fissuras." }
+            { texto: "Aceitar a oscilação natural da rede elétrica", efeito: { energia: -15, agua: 0, saude: -5 }, feedback: "A oscilação causou uma queda repentina no aquecimento. A árvore sofreu pequenas fissuras." }
         ]
     },
     10: {
@@ -70,3 +70,4 @@ const bancoDeEventos = {
         ]
     }
 };
+

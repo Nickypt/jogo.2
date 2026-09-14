@@ -1,60 +1,40 @@
-// Configura o escutador de eventos de teclado quando o navegador carrega a página
 window.onload = function() {
     const input = document.getElementById("terminal-input");
     if (input) {
         input.addEventListener("keypress", function(evento) {
             if (evento.key === "Enter") {
                 processarComandoTerminal(this.value.trim().toLowerCase());
-                this.value = ""; // Limpa a barra de entrada de comandos
+                this.value = ""; 
             }
         });
     }
 };
 
-// 🕹️ INTERPRETADOR DE COMANDOS (Input Parser)
 function processarComandoTerminal(comando) {
     const log = document.getElementById("log-jogo");
 
-    // Fluxo A: Se o jogador estiver dentro do minijogo de hacking
-    if (modoMinijogo) {
-        executarTurnoMinijogo(comando);
-        return;
-    }
+    if (modoMinijogo) { executarTurnoMinijogo(comando); return; }
+    if (modoUpgrade) { processarComandoUpgrade(comando); return; }
+    if (comando === "/proximo") { verificarFaseDeTransição(); return; }
 
-    // Fluxo B: Se o jogador estiver na tela de seleção de upgrades
-    if (modoUpgrade) {
-        processarComandoUpgrade(comando);
-        return;
-    }
-
-    // Fluxo C: Comando para avançar de ciclo de forma síncrona
-    if (comando === "/proximo") {
-        verificarFaseDeTransição();
-        return;
-    }
-
-    // Fluxo D: Comando para iniciar descriptografia
     if (comando === "/descriptografar") {
-        if (typeof diariosElena !== 'undefined' && diariesElena !== null && diariosElena[estado.dia]) {
-            if (estado.energia >= 25) {
-                iniciarMinijogoHack();
-            } else {
-                log.innerHTML += "<p class='alerta-erro'>> ERRO: Energia insuficiente para quebrar chave criptográfica (Mínimo: 25%).</p>";
-            }
-        } else {
-            log.innerHTML += "<p class='alerta-erro'>> ERRO: Nenhuma assinatura oculta detectada neste ciclo.</p>";
-        }
+        if (typeof diariosElena !== 'undefined' && diariesElena[estado.dia]) {
+            if (estado.energia >= 25) { iniciarMinijogoHack(); } 
+            else { log.innerHTML += "<p class='alerta-erro'>> ERRO: Energia insuficiente para o Cracking Bypass.</p>"; }
+        } else { log.innerHTML += "<p class='alerta-erro'>> ERRO: Nenhuma assinatura oculta detectada neste ciclo.</p>"; }
         log.scrollTop = log.scrollHeight;
         return;
     }
 
-    // Fluxo E: Resoluções das opções textuais padrões do dia (/opcao1 ou /opcao2)
     if (comando === "/opcao1" || comando === "/opcao2") {
         const eventoAtual = bancoDeEventos[estado.dia];
         if (!eventoAtual) return;
 
         const indice = comando === "/opcao1" ? 0 : 1;
         const escolha = eventoAtual.opcoes[indice];
+
+        if (estado.dia === 1 && comando === "/opcao1") { estado.temperaturaEstufa += 10; }
+        if (estado.dia === 4 && comando === "/opcao2") { conquistas.friezaLogistica = true; }
 
         estado.energia = Math.max(0, Math.min(100, estado.energia + escolha.efeito.energia));
         estado.agua = Math.max(0, Math.min(100, estado.agua + escolha.efeito.agua));
@@ -66,7 +46,11 @@ function processarComandoTerminal(comando) {
             <p class="alerta-aviso">----------------------------------------</p>
         `;
 
-        if (typeof diariosElena !== 'undefined' && diariesElena !== null && diariosElena[estado.dia]) {
+        if (estado.temperaturaEstufa <= 12) {
+            log.innerHTML += `<p class='alerta-erro'>> [WARN]: Sensores térmicos registram frio extremo na estufa (${estado.temperaturaEstufa}°C). Risco de congelamento.</p>`;
+        }
+
+        if (typeof diariosElena !== 'undefined' && diariesElena[estado.dia]) {
             log.innerHTML += `<p class="alerta-aviso">> ALERTA: Arquivo de log oculto detectado. Digite <b style='color:#ffcc00'>/descriptografar</b> para tentar acessá-lo.</p>`;
         }
 
@@ -78,28 +62,24 @@ function processarComandoTerminal(comando) {
     }
 }
 
-// Lógica de turnos internos para o minijogo de adivinhação estável
 function executarTurnoMinijogo(comando) {
     const palpite = parseInt(comando);
     const log = document.getElementById("log-jogo");
 
-    if (isNaN(palpite)) {
-        log.innerHTML += "<p class='alerta-erro'>> FORMATO_INVÁLIDO. Digite apenas números decimais.</p>";
-        return;
-    }
-
+    if (isNaN(palpite)) { log.innerHTML += "<p class='alerta-erro'>> FORMATO_INVÁLIDO. Digite inteiros.</p>"; return; }
     tentativasMinijogo--;
 
     if (palpite === numeroSecretoMinijogo) {
         modoMinijogo = false;
         estado.energia = Math.max(0, estado.energia - 20);
         atualizarPainelVisual();
+        conquistas.investigadorQuantico += 1;
         
         abrirTelaDocumento(diariosElena[estado.dia]);
         
         log.innerHTML = `
-            <p class="alerta-sucesso">> BYPASS_CONCLUÍDA. Chave quebrada.</p>
-            <p>Os dados foram extraídos e exibidos na tela auxiliar.</p>
+            <h2 class="alerta-sucesso">> BYPASS_CONCLUÍDO. Chave estável obtida.</h2>
+            <p>Os dados foram extraídos para o overlay auxiliar.</p>
             <p>Digite <b style='color:#fff'>/proximo</b> para dar andamento ao ciclo noturno.</p>
         `;
     } else {
@@ -119,15 +99,12 @@ function executarTurnoMinijogo(comando) {
     log.scrollTop = log.scrollHeight;
 }
 
-// Processador textual do fluxo de upgrades
 function processarComandoUpgrade(comando) {
     const log = document.getElementById("log-jogo");
 
-    if (comando === "/painel") {
-        upgradesAtivos.perdaEnergiaReduzida = true;
-    } else if (comando === "/irrigar") {
-        upgradesAtivos.perdaAguaReduzida = true;
-    } else if (comando === "/recarga") {
+    if (comando === "/painel") { upgradesAtivos.perdaEnergiaReduzida = true; } 
+    else if (comando === "/irrigar") { upgradesAtivos.perdaAguaReduzida = true; } 
+    else if (comando === "/recarga") {
         estado.energia = Math.min(100, estado.energia + 15);
         estado.agua = Math.min(100, estado.agua + 15);
     } else {

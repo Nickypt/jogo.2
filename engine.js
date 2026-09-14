@@ -1,5 +1,12 @@
-// Estado inicial do jogo
-let estado = { dia: 1, saudeArvore: 100, agua: 50, energia: 100 };
+// Estado inicial do jogo com variáveis ocultas de ambiente
+let estado = { 
+    dia: 1, 
+    saudeArvore: 100, 
+    agua: 50, 
+    energia: 100,
+    temperaturaEstufa: 22,
+    eficienciaPaineis: 100
+};
 
 // Estado anterior (para cálculo das setinhas de tendência ▲ e ▼)
 let estadoAnterior = { saudeArvore: 100, agua: 50, energia: 100 };
@@ -10,14 +17,12 @@ let upgradesAtivos = {
     perdaAguaReduzida: false
 };
 
-let indiceTexto = 0;
-const dialogosIntro = [
-    "<span class='alerta-aviso'>[SISTEMA]: Inicializando Matrix Operacional de Nutrição Orgânica...</span>",
-    "<span class='alerta-erro'>[SISTEMA]: Erro crítico detectado. Setores de memória corrompidos.</span>",
-    "M.O.N.O.: Onde estão todos? Sensores térmicos: ZERO humanos na base Ares-IV. Registro de evacuação encontrado há 336 horas. Eles... me deixaram?",
-    "M.O.N.O.: A 'Gênesis' — a última árvore da Terra — está perdendo temperatura. Níveis de água escassos.",
-    "M.O.N.O.: Protocolo de emergência. Resgate automático estimado em 15 dias. Eu sou apenas um software de jardinagem... mas o futuro depende de mim."
-];
+// Rastreamento das Conquistas
+let conquistas = {
+    maximaEficiencia: true,
+    investigadorQuantico: 0,
+    friezaLogistica: false
+};
 
 // Variáveis de controle de fluxo de minijogos e upgrades
 let modoMinijogo = false;
@@ -26,21 +31,10 @@ let numeroSecretoMinijogo = 0;
 let tentativasMinijogo = 0;
 
 function inicializarSistema() {
-    const btn = document.getElementById("btn-iniciar");
-    const caixaTexto = document.getElementById("texto-intro");
-    
-    if (indiceTexto < dialogosIntro.length) {
-        btn.innerText = "AVANÇAR DIAGNÓSTICO >>";
-        if (indiceTexto === 0) caixaTexto.innerHTML = "";
-        caixaTexto.innerHTML += `<p>> ${dialogosIntro[indiceTexto]}</p>`;
-        caixaTexto.scrollTop = caixaTexto.scrollHeight;
-        indiceTexto++;
-    } else {
-        document.getElementById("tela-inicial").classList.add("escondido");
-        document.getElementById("tela-jogo").classList.remove("escondido");
-        document.getElementById("terminal-input").focus();
-        começarDia();
-    }
+    document.getElementById("tela-inicial").classList.add("escondido");
+    document.getElementById("tela-jogo").classList.remove("escondido");
+    document.getElementById("terminal-input").focus();
+    começarDia();
 }
 
 function construirBarra(valor, maximo) {
@@ -50,7 +44,6 @@ function construirBarra(valor, maximo) {
     return "█".repeat(Math.max(0, preenchidos)) + "░".repeat(Math.max(0, vazios)) + ` (${valor})`;
 }
 
-// 📈 Calcula e exibe dinamicamente as setinhas de tendência
 function atualizarElementoTendencia(idElemento, valorAtual, valorAntigo) {
     const el = document.getElementById(idElemento);
     if (valorAtual > valorAntigo) {
@@ -81,7 +74,6 @@ function começarDia() {
     atualizarPainelVisual();
     if (typeof verificarFimDeJogo === 'function' && verificarFimDeJogo()) return;
 
-    // Fixa o patamar do início do dia como referência de tendência anterior
     estadoAnterior = { ...estado };
     modoMinijogo = false;
     modoUpgrade = false;
@@ -113,7 +105,7 @@ function iniciarMinijogoHack() {
     const log = document.getElementById("log-jogo");
     log.innerHTML = `
         <h2 class="alerta-aviso">[ROUTINE: CRACKING_OVERRIDE_INIT]</h2>
-        <p><b>M.O.N.O.:</b> Forçando bypass no firewall de arquivos da Dra. Elena. O algoritmo exige uma chave numérica estável entre <b>1 e 50</b>.</p>
+        <p><b>M.O.N.O.:</b> Forçando bypass no firewall de arquivos da Dra. Elena. O algoritmo exige uma chave estável entre <b>1 e 50</b>.</p>
         <p class="alerta-erro">> Integridade do bypass: 5 tentativas antes do bloqueio definitivo.</p>
         <p>Digite uma estimativa numérica no terminal:</p>
     `;
@@ -147,10 +139,26 @@ function avançarDia() {
     let custoAgua = upgradesAtivos.perdaAguaReduzida ? 5 : 8;
     let custoEnergia = upgradesAtivos.perdaEnergiaReduzida ? 5 : 8;
 
+    estado.temperaturaEstufa -= 4;
+
+    if (estado.temperaturaEstufa <= 10) {
+        custoAgua *= 2;
+    }
+
     estado.agua -= custoAgua; 
     estado.energia -= custoEnergia;
+
+    if (estado.dia === 3 && estadoAnterior.energia < 60) {
+        estado.eficienciaPaineis = 75; 
+    }
+
+    estado.energia = Math.min(estado.eficienciaPaineis, estado.energia);
     
-    if (estado.agua <= 0 || estado.energia <= 0) {
+    if (estado.agua < 20 || estado.energia < 20 || estado.saudeArvore < 20) {
+        conquistas.maximaEficiencia = false;
+    }
+
+    if (estado.agua <= 0 || estado.energia <= 0 || estado.temperaturaEstufa <= 0) {
         estado.saudeArvore -= 20;
     }
 
@@ -158,7 +166,6 @@ function avançarDia() {
     começarDia();
 }
 
-// FUNÇÕES DE TRANSIÇÃO DA TELA DE DIÁRIO CONFIDENCIAL
 function abrirTelaDocumento(textoCompleto) {
     const telaDoc = document.getElementById("tela-documento");
     const conteudoDoc = document.getElementById("conteudo-documento");
