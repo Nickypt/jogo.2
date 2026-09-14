@@ -21,17 +21,24 @@
         <div class="corner-tag bottom-left">SECURE_LINE_0x99</div>
         <div class="corner-tag bottom-right">MODEL: M.O.N.O._v1.04</div>
 
-        <!-- ETAPA 1: TELA INICIAL (MENU PRINCIPAL) -->
+        <!-- ETAPA 1: TELA INICIAL (MENU DE AUTENTICAÇÃO) -->
         <div id="tela-inicial" class="painel-inicial-container">
             <div class="menu-sistema-topo">
                 <span class="ponto-piscante-off">● STANDBY_MODE</span>
                 <span>SECURE_DATA_PROTOCOL // ARES_IV</span>
-                <span>SYSTEM_BOOT_SEQUENCE_v1.0.4</span>
+                <span>BOOT_SEQUENCE</span>
             </div>
 
             <div class="bloco-titulo-inicial">
                 <h1 class="titulo-inicial">M.O.N.O.</h1>
                 <p class="subtitulo">[ CORE_KERNEL: INACTIVE // DIRECTIVE: RECOVERY_WAIT ]</p>
+            </div>
+
+            <div class="caixa-texto-intro">
+                <div class="linha-log"><span class="prefixo-sys">[0.002]</span> Sincronizando receptores elétricos primários... <span class="log-ok">[OK]</span></div>
+                <div class="linha-log"><span class="prefixo-sys">[0.145]</span> Mapeando integridade da cúpula climática... <span class="log-ok">[ESTÁVEL]</span></div>
+                <div class="linha-log"><span class="prefixo-sys">[0.590]</span> Varredura de bio-assinaturas terrestres... <span class="log-erro">[ZERO_CONTACTS]</span></div>
+                <div class="linha-log-final"><span class="prefixo-sys">[READY]</span> Kernel pronto para acoplamento de consciência. Digite <b style="color:#ffcc00">/retomar</b> para carregar um backup existente.</div>
             </div>
 
             <div class="barra-carregamento-estetica">
@@ -40,18 +47,37 @@
             
             <div class="container-botao-inicial">
                 <button id="btn-iniciar" class="botao-cyber-inicial" onclick="despertarIA()">
-                     [ EXECUTAR_PROTOCOLO_BIOSFERA ]
+                     [ ESTABELECER_CONEXAO_NEURAL ]
                 </button>
             </div>
         </div>
 
-        <!-- ETAPA 2: PRÓLOGO CINEMATOGRÁFICO (FALAS DO ROBÔ) -->
+        <!-- ETAPA 2: PRÓLOGO CINEMATOGRÁFICO (MONÓLOGO + PROJEÇÃO DA PLANTA) -->
         <div id="tela-prologo" class="escondido painel-prologo-container">
             <div class="interface-header">> LOGS_DE_CONSCIÊNCIA // DESPERTAR_SISTÊMICO</div>
-            <div class="caixa-texto-prologo" id="texto-prologo"></div>
+            
+            <div class="grade-prologo-cinema">
+                <!-- Caixa de Diálogo do Robô -->
+                <div class="caixa-texto-prologo" id="texto-prologo"></div>
+                
+                <!-- Caixa Holográfica de Análise da Planta -->
+                <div class="painel-holograma-planta">
+                    <div class="moldura-holograma">
+                        <!-- Insira a imagem "planta.png" na mesma pasta do projeto -->
+                        <img src="planta.png" alt="Gênesis" class="imagem-planta-holo">
+                        <div class="linha-laser-scan"></div>
+                    </div>
+                    <div class="dados-telemetria-rapida">
+                        <span>SP_ORIGEM: TERRA (EXTINTA)</span>
+                        <span>GEN: SEQUOIADENDRON_M1</span>
+                        <span>STATUS: CRÍTICO</span>
+                    </div>
+                </div>
+            </div>
+
             <div class="container-botao-prologo">
                 <button id="btn-prologo" class="botao-prologo-avancar" onclick="avançarPrologo()">
-                    AVANÇAR_VARREDURA_DE_DADOS >>
+                    PROCESSAR_BANCO_DE_MEMÓRIAS >>
                 </button>
             </div>
         </div>
@@ -61,18 +87,13 @@
             
             <!-- PAINEL ESQUERDO: TELEMETRIA DA ÁRVORE -->
             <div class="painel-esquerdo">
-                <div class="interface-header">> TELEMETRIA BIOMÉTRICA</div>
+                <div class="interface-header">> TELEMETRIA BIOMÉTRICA (GÊNESIS)</div>
                 
-                <!-- Exibição Visual da Planta com Scanner Laser -->
-                <div class="wrapper-imagem-planta">
-                    <img src="planta.png" alt="Gênesis Core" class="imagem-planta-cyber">
-                    <div class="radar-scan"></div>
-                </div>
-
-                <!-- Gráfico de Telemetria Dinâmico -->
-                <div class="wrapper-grafico">
-                    <div class="grafico-header">[ HISTÓRICO_INTEGRIDADE_VITAL ]</div>
-                    <pre id="grafico-telemetria" class="grafico-linhas">█</pre>
+                <div class="wrapper-arvore">
+                    <div class="container-planta-gameplay">
+                        <img src="planta.png" alt="Gênesis Vital" class="planta-gameplay-img">
+                        <div class="radar-scan"></div>
+                    </div>
                 </div>
 
                 <div class="status-grupo">
@@ -110,7 +131,7 @@
                 
                 <div class="prompt-container">
                     <span class="prompt-simbolo">AI_KERNEL://</span>
-                    <input type="text" id="terminal-input" placeholder="Digite uma diretriz..." autocomplete="off">
+                    <input type="text" id="terminal-input" autofocus placeholder="Digite uma diretriz..." autocomplete="off">
                 </div>
             </div>
 
@@ -139,7 +160,10 @@
     <script src="diarios.js"></script>
     <script src="eventos.js"></script>
     <script src="finais.js"></script>
+    <script src="clima.js"></script>
+    <script src="save.js"></script>
     <script src="engine.js"></script>
     <script src="parser.js"></script>
 </body>
 </html>
+

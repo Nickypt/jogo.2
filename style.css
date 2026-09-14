@@ -1,76 +1,45 @@
-/* --- CORES, NEON E IDENTIDADE FUTURISTA --- */
-body {
-    color: #00ffcc;
-}
+/* --- ESTÉTICA NEON, GLITCH E TEMAS DE FINAIS --- */
+body { color: #00ffcc; }
 
 .terminal {
-    border: 1px solid rgba(0, 255, 204, 0.25);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(0, 255, 204, 0.25); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
     box-shadow: 0 0 50px rgba(0, 255, 204, 0.1), inset 0 0 30px rgba(0, 255, 204, 0.05);
 }
 
 .corner-tag { color: rgba(0, 255, 204, 0.4); }
 
-/* Linha de Varredura Quântica */
 .terminal::before {
     content: " "; display: block; position: absolute; top: 0; left: 0; bottom: 0; right: 0;
     background: linear-gradient(rgba(0, 255, 204, 0) 98%, rgba(0, 255, 204, 0.08) 2%);
-    background-size: 100% 25px; pointer-events: none;
-    animation: scanlineMovement 6s linear infinite;
+    background-size: 100% 25px; pointer-events: none; animation: scanlineMovement 6s linear infinite;
 }
 
 .menu-sistema-topo { border-bottom: 1px solid rgba(0, 255, 204, 0.15); }
 .ponto-piscante-on { color: #00ff99; }
-.ponto-piscante-off { color: #ff3366; animation: piscarAnim 2s infinite; }
-
 .titulo-inicial {
     font-size: 3.5rem; font-weight: 900; letter-spacing: 12px; margin: 0; color: #00ffcc;
-    text-shadow: 0 0 15px rgba(0, 255, 204, 0.5), 0 0 30px rgba(0, 255, 204, 0.2);
-    animation: glitcheffect 5s infinite alternate;
+    text-shadow: 0 0 15px rgba(0, 255, 204, 0.5), 0 0 30px rgba(0, 255, 204, 0.2); animation: glitcheffect 5s infinite alternate;
 }
 .subtitulo { color: rgba(0, 255, 204, 0.5); letter-spacing: 3px; }
 
-.caixa-texto-intro {
-    border: 1px solid rgba(0, 255, 204, 0.15); background-color: rgba(1, 6, 5, 0.4);
-    box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.6);
-}
+.caixa-texto-intro { border: 1px solid rgba(0, 255, 204, 0.15); background-color: rgba(1, 6, 5, 0.4); box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.6); }
 .linha-log { color: rgba(0, 255, 204, 0.8); }
-.linha-log-final { color: #00ffcc; font-weight: bold; }
-.log-ok { color: #00ff99; }
-.log-erro { color: #ff3366; }
+.linha-log-final { color: #00ffcc; }
+.log-ok { color: #00ff99; font-weight: bold; }
+.log-erro { color: #ff3366; font-weight: bold; }
 
 .barra-carregamento-estetica { background: rgba(0, 255, 204, 0.1); }
 .progresso-linha-cyber { background: linear-gradient(90deg, transparent, #00ffcc, transparent); animation: scanDeLuz 2.5s ease-in-out infinite; }
 
 .botao-cyber-inicial {
     background: rgba(0, 255, 204, 0.02); border: 1px solid #00ffcc; color: #00ffcc; letter-spacing: 2px;
-    box-shadow: 0 0 15px rgba(0, 255, 204, 0.1);
-    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-    animation: pulsoBotaoInicial 2s infinite alternate;
+    box-shadow: 0 0 15px rgba(0, 255, 204, 0.1); transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); animation: pulsoBotaoInicial 2s infinite alternate;
 }
-.botao-cyber-inicial:hover {
-    background: rgba(0, 255, 204, 0.15); box-shadow: 0 0 25px rgba(0, 255, 204, 0.5), inset 0 0 10px rgba(0, 255, 204, 0.2); letter-spacing: 3px;
-}
+.botao-cyber-inicial:hover { background: rgba(0, 255, 204, 0.15); box-shadow: 0 0 25px rgba(0, 255, 204, 0.5), inset 0 0 10px rgba(0, 255, 204, 0.2); letter-spacing: 3px; }
 
-/* ESTILOS DA TELA DO PRÓLOGO */
-.caixa-texto-prologo p { margin: 0 0 20px 0; color: rgba(0, 255, 204, 0.85); text-shadow: 0 0 4px rgba(0, 255, 204, 0.1); }
-.caixa-texto-prologo p b { color: #00ffcc; text-shadow: 0 0 8px rgba(0, 255, 204, 0.4); }
-.botao-prologo-avancar {
-    background: rgba(0, 255, 204, 0.03); border: 1px solid rgba(0, 255, 204, 0.6); color: #00ffcc;
-    padding: 12px 30px; font-family: 'Courier New', monospace; font-size: 0.85rem; font-weight: bold;
-    cursor: pointer; border-radius: 4px; transition: all 0.3s ease;
-}
-.botao-prologo-avancar:hover { background: rgba(0, 255, 204, 0.15); box-shadow: 0 0 15px rgba(0, 255, 204, 0.3); border-color: #00ffcc; }
-
-/* LAYOUT DE GAMEPLAY */
 .interface-header { border-left: 2px solid #00ffcc; padding-left: 8px; color: rgba(0, 255, 204, 0.5); letter-spacing: 2px; }
 .painel-esquerdo { border-right: 1px solid rgba(0, 255, 204, 0.15); }
-.imagem-planta-cyber { filter: drop-shadow(0 0 10px rgba(0, 255, 204, 0.6)); }
-.radar-scan { background: linear-gradient(to bottom, transparent, rgba(0, 255, 204, 0.2)); border-bottom: 1px solid #00ffcc; animation: radarScanAnim 3s linear infinite; }
-
-.grafico-header { font-size: 0.6rem; color: rgba(0, 255, 204, 0.4); text-align: center; letter-spacing: 1px; }
-.grafico-linhas { color: #00ffcc; text-shadow: 0 0 8px rgba(0, 255, 204, 0.5); font-family: 'Courier New', monospace; }
+.ascii-arvore { color: #33ffcc; text-shadow: 0 0 10px rgba(51, 255, 204, 0.8); }
 
 .label-wrapper label { color: rgba(0, 255, 204, 0.6); letter-spacing: 1px; }
 .barra { letter-spacing: 4px; text-shadow: 0 0 8px rgba(0, 255, 204, 0.5); }
@@ -79,37 +48,26 @@ body {
 .caixa-texto { background-color: rgba(1, 4, 3, 0.7); border: 1px solid rgba(0, 255, 204, 0.2); }
 .prompt-container { background-color: rgba(1, 5, 4, 0.8); border: 1px solid rgba(0, 255, 204, 0.3); box-shadow: 0 0 15px rgba(0, 255, 204, 0.05); }
 .prompt-simbolo { color: #00ffcc; text-shadow: 0 0 8px rgba(0, 255, 204, 0.5); }
-#terminal-input { color: #00ffcc; text-shadow: 0 0 5px rgba(0, 255, 204, 0.5); }
+#terminal-input { color: #00ffcc; text-shadow: 0 0 5px rgba(0, 255, 204, 0.5); font-family: 'Courier New', monospace; }
 #terminal-input::placeholder { color: #123d12; }
 
-/* BOTÕES GERAIS */
-button:not(.botao-cyber-inicial):not(.btn-fechar-doc):not(.botao-prologo-avancar) {
+button:not(.botao-cyber-inicial):not(.btn-fechar-doc) {
     background: rgba(0, 255, 204, 0.05); border: 1px solid #00ffcc; color: #00ffcc;
     text-shadow: 0 0 5px rgba(0, 255, 204, 0.5); transition: all 0.3s ease;
 }
-button:not(.botao-cyber-inicial):not(.btn-fechar-doc):not(.botao-prologo-avancar):hover { background: rgba(0, 255, 204, 0.2); box-shadow: 0 0 20px rgba(0, 255, 204, 0.4); }
+button:not(.botao-cyber-inicial):not(.btn-fechar-doc):hover { background: rgba(0, 255, 204, 0.2); box-shadow: 0 0 20px rgba(0, 255, 204, 0.4); }
 
-/* ALERTAS NEON */
-.alerta-erro { color: #ff3366; text-shadow: 0 0 10px rgba(255, 51, 102, 0.6); }
-.alerta-aviso { color: #ffcc00; text-shadow: 0 0 10px rgba(255, 204, 0, 0.5); }
-.alerta-sucesso { color: #00ff99; text-shadow: 0 0 10px rgba(0, 255, 153, 0.6); }
-.tend-sobe { color: #00ff99; }
-.tend-desce { color: #ff3366; }
-
-/* DIÁRIO LARANJA HOLOGRÁFICO */
 .overlay-documento { background-color: rgba(1, 3, 2, 0.97); }
 .pasta-recipiente { background-color: rgba(20, 10, 0, 0.8); backdrop-filter: blur(10px); border: 1px solid #ffaa00; box-shadow: 0 0 60px rgba(255, 170, 0, 0.2); color: #ffebcc; }
 .linha-decorativa { border-top: 1px dashed rgba(255, 170, 0, 0.3); }
 .btn-fechar-doc { border-color: #ffaa00; color: #ffaa00; background: rgba(255, 170, 0, 0.05); text-shadow: 0 0 5px rgba(255, 170, 0, 0.5); }
 .btn-fechar-doc:hover { background: rgba(255, 170, 0, 0.2); box-shadow: 0 0 20px rgba(255, 170, 0, 0.4); color: #ffaa00; }
 
-/* --- TEMAS DE COR DOS FINAIS --- */
 .final-esmeralda { background: rgba(2, 20, 10, 0.85) !important; border-color: #00ff66 !important; color: #ccffdd !important; box-shadow: 0 0 60px rgba(0, 255, 102, 0.3) !important; }
 .final-ambar { background: rgba(20, 12, 2, 0.85) !important; border-color: #ffaa00 !important; color: #ffeebb !important; box-shadow: 0 0 60px rgba(255, 170, 0, 0.25) !important; }
 .final-sacrificio { background: rgba(20, 2, 5, 0.85) !important; border-color: #ff3366 !important; color: #ffcccc !important; box-shadow: 0 0 60px rgba(255, 51, 102, 0.25) !important; }
 .final-morte { background: #050505 !important; border-color: #333333 !important; color: #666666 !important; filter: grayscale(100%); }
 
-/* --- CONFIGURAÇÕES DE ANIMAÇÕES --- */
 @keyframes gridScroll { 0% { background-position: 0 0; } 100% { background-position: 0 1000px; } }
 @keyframes scanlineMovement { 0% { background-position: 0 0; } 100% { background-position: 0 100%; } }
 @keyframes scanDeLuz { 0% { left: -40%; } 100% { left: 110%; } }
@@ -120,13 +78,13 @@ button:not(.botao-cyber-inicial):not(.btn-fechar-doc):not(.botao-prologo-avancar
     100% { transform: scaleY(1) scaleX(1); filter: brightness(1); opacity: 1; }
 }
 @keyframes glitcheffect {
-    0%, 95%, 100% { text-shadow: 0 0 10px rgba(0, 255, 204, 0.3); transform: skew(0); }
+    0%, 95%, 100% { text-shadow: 0 0 10px rgba(0, 255, 204, 0.5); transform: skew(0); }
     96% { text-shadow: -3px 0 #ff3366, 3px 0 #00ffff; transform: skew(-2deg); }
     98% { text-shadow: 3px 0 #ff3366, -3px 0 #00ffff; transform: skew(3deg); }
 }
 @keyframes pulsoBotaoInicial {
-    0% { border-color: rgba(0, 255, 204, 0.3); box-shadow: 0 0 10px rgba(0, 255, 204, 0.05); }
-    100% { border-color: rgba(0, 255, 204, 0.9); box-shadow: 0 0 20px rgba(0, 255, 204, 0.15); }
+    0% { border-color: rgba(0, 255, 204, 0.4); box-shadow: 0 0 10px rgba(0, 255, 204, 0.05); }
+    100% { border-color: rgba(0, 255, 204, 1); box-shadow: 0 0 20px rgba(0, 255, 204, 0.2); }
 }
 
 .piscar { animation: piscarAnim 1.5s infinite; }

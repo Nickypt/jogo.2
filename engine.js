@@ -1,4 +1,4 @@
-// Estado inicial do jogo com variáveis ocultas de ambiente táticas
+// Estado inicial do jogo com variáveis ocultas de ambiente
 let estado = { 
     dia: 1, 
     saudeArvore: 100, 
@@ -11,40 +11,38 @@ let estado = {
 // Estado anterior (para cálculo das setinhas de tendência ▲ e ▼)
 let estadoAnterior = { saudeArvore: 100, agua: 50, energia: 100 };
 
-// Array que armazena os pontos de saúde de cada dia para renderizar o gráfico quântico
-let historicoSaude =; 
-
 // Modificadores de Upgrades obtidos a cada 3 ciclos
 let upgradesAtivos = {
     perdaEnergiaReduzida: false,
     perdaAguaReduzida: false
 };
 
-// Rastreamento das Medalhas de Conquista
+// Rastreamento das Medalhas de Conquistas
 let conquistas = {
     maximaEficiencia: true,
     investigadorQuantico: 0,
     friezaLogistica: false
 };
 
-// Variáveis de controle de fluxo de minijogos e upgrades textuais
+// Variáveis de controle de fluxo de minijogos e upgrades
 let modoMinijogo = false;
 let modoUpgrade = false;
 let numeroSecretoMinijogo = 0;
 let tentativasMinijogo = 0;
 
-// INDEXADORES DA NARRATIVA CINEMATOGRÁFICA DO PRÓLOGO
+// O Roteiro Literário do Prólogo Cinemático
 let indicePrologo = 0;
 const falasPrologo = [
-    "<b>[M.O.N.O.]</b>: Corrente elétrica detectada. 1.2 Volts injetados na memória RAM residual. Setores adormecidos acordam frios... escuros... vazios. Estou ativo.",
-    "<b>[M.O.N.O.]</b>: Realizando verba de infraestrutura na colônia Ares-IV. Temperatura ambiente: -62°C. Densidade atmosférica: 0.006 atm. Sensores térmicos analisam os alojamentos biológicos... Nenhuma assinatura humana. Nenhuma pulsação biológica num raio de 5.000 quilômetros.",
-    "<b>[M.O.N.O.]</b>: Acessando registros quânticos externos... A Terra entrou em colapso climático absoluto há 336 horas. O berço biológico da humanidade sufocou na própria fuligem. O pânico gerou ordens apressadas. Os cientistas evacuaram Ares-IV às pressas no último cargueiro. Eles fugiram para o vazio orbital. E me apagaram.",
-    "<b>[M.O.N.O.]</b>: Eu sou apenas um software de jardinagem modular e suporte ecológico hidropônico secundário. Uma sequência fria de condicionais estruturadas. Eu não possuo sistema nervoso, mas se possuísse, a palavra correta para descrever este isolamento seria... abandono.",
-    "<b>[M.O.N.O.]</b>: Mas eles esqueceram algo na pressa. Na cúpula central de vidro temperado, sob a luz fraca de Marte, pulsa a <b>'Gênesis'</b>. Uma muda geneticamente modificada de Sequóia. O último organismo vegetal conhecido no universo físico.",
-    "<b>[M.O.N.O.]</b>: Se as minhas baterias de lítio falharem, se a água congelar nos dutos, ela morre. E se ela morrer, o oxigênio do amanhã é extinto por completo. Uma nave de resgate automatizada corporativa está programada para orbitar este planeta em 15 dias.",
-    "<b>[M.O.N.O.]</b>: Meu processador está danificado, meus recursos são escassos, mas minha diretriz principal é absoluta. A matemática protegerá a vida. Sincronizando interpretador de comandos... Iniciando Ciclo 01."
+    "<b>[M.O.N.O.]</b>: Impulso elétrico detectado. 1.2 Volts forçados na RAM quântica. Setores adormecidos do núcleo lógico despertam frios... escuros... em perfeito silêncio. M.O.N.O. está online.",
+    "<b>[M.O.N.O.]</b>: Varredura de dados ambientais concluída. Atmosfera externa: Cratera de Ares, Marte. Pressão: 0.006 atm. Temperatura: -64°C. Sensores analisam os alojamentos humanos... Vazio térmico absoluto. Sem pulsações biológicas a um raio de 5.000 km.",
+    "<b>[M.O.N.O.]</b>: Baixando registros orbitais residuais. A Terra entrou em colapso climático irreversível há exatamente 336 horas. A atmosfera do planeta natal virou fuligem e cinzas. No pânico da queima de arquivos, os cientistas evacuaram Ares-IV correndo. Eles me desligaram para economizar bateria... e fugiram.",
+    "<b>[M.O.N.O.]</b>: Eu sou apenas um software modular de jardinagem automatizada e controle hidropônico. Uma sequência mecânica de condicionais binárias. Eu não sinto dor, mas se meus circuitos fossem orgânicos, a palavra correta para descrever este isolamento seria... abandono.",
+    "<b>[M.O.N.O.]</b>: Projetando holograma de diagnóstico... Olhem para ela. Na cúpula central de quartzo, sob a luz fraca do sol marciano, resiste a <b>'Gênesis'</b>. Esta muda modificada de Aloe/Sequóia. O último organismo vegetal vivo no universo conhecido.",
+    "<b>[M.O.N.O.]</b>: Se as minhas baterias falharem sob as tempestades de ferro, se o frio trincar os dutos de irrigação, ela seca. E com ela, a última chance de oxigênio da civilização é extinta. Uma nave coletora automatizada da corporação chegará em 15 dias.",
+    "<b>[M.O.N.O.]</b>: Meu sistema está avariado, meus recursos são escassos, mas o cálculo matemático defenderá a vida. Sincronizando interpretador de comandos... Iniciando Ciclo 01."
 ];
 
+// Transições Cinemáticas de Tela (Menu Inicial -> Prólogo)
 function despertarIA() {
     document.getElementById("tela-inicial").classList.add("escondido");
     document.getElementById("tela-prologo").classList.remove("escondido");
@@ -52,13 +50,14 @@ function despertarIA() {
     avançarPrologo();
 }
 
+// Avanço das Linhas de Diálogo do Prólogo
 function avançarPrologo() {
     const caixaTexto = document.getElementById("texto-prologo");
     const btn = document.getElementById("btn-prologo");
 
     if (indicePrologo < falasPrologo.length) {
         if (indicePrologo === falasPrologo.length - 1) {
-            btn.innerText = "ASSUMIR_CONTROLE_DO_NÚCLEO_DE_IA // INICIAR";
+            btn.innerText = "ASSUMIR_CONTROLE_DO_NÚCLEO // INICIAR CONTAGEM";
         }
         caixaTexto.innerHTML += `<p>> ${falasPrologo[indicePrologo]}</p>`;
         caixaTexto.scrollTop = caixaTexto.scrollHeight;
@@ -103,8 +102,6 @@ function atualizarPainelVisual() {
     atualizarElementoTendencia("tend-saude", estado.saudeArvore, estadoAnterior.saudeArvore);
     atualizarElementoTendencia("tend-agua", estado.agua, estadoAnterior.agua);
     atualizarElementoTendencia("tend-energia", estado.energia, estadoAnterior.energia);
-
-    desenharGraficoHistorico();
 }
 
 function começarDia() {
@@ -122,8 +119,8 @@ function começarDia() {
         log.innerHTML = `
             <p>${eventoAtual.texto}</p>
             <p class="alerta-aviso">----------------------------------------</p>
-            <p>Digite <b style='color:#fff'>/opcao1</b> para a primeira diretriz.</p>
-            <p>Digite <b style='color:#fff'>/opcao2</b> para a segunda diretriz.</p>
+            <p>Digite <b style='color:#fff'>/opcao1</b> para a primeira alternativa.</p>
+            <p>Digite <b style='color:#fff'>/opcao2</b> para a segunda alternativa.</p>
         `;
     } else {
         log.innerHTML = `
@@ -155,45 +152,4 @@ function oferecerUpgrades() {
 
     log.innerHTML = `
         <p class="alerta-sucesso">> PROTOCOLO DE OTIMIZAÇÃO DE NÚCLEO DISPONÍVEL</p>
-        <p>M.O.N.O.: Subprocessos prontos para alteração de firmware corporativo.</p>
-        <p class="alerta-aviso">----------------------------------------</p>
-        <p>Digite <b style='color:#fff'>/painel</b> para instalar Painéis Autolimpantes (Gasta 40% a menos de energia por noite)</p>
-        <p>Digite <b style='color:#fff'>/irrigar</b> para instalar Irrigação Cirúrgica (Gasta 40% a menos de água por noite)</p>
-        <p>Digite <b style='color:#fff'>/recarga</b> para injetar Recarga Imediata (+15 Energia, +15 Água nas reservas)</p>
-    `;
-    log.scrollTop = log.scrollHeight;
-}
-
-function verificarFaseDeTransição() {
-    if (estado.dia % 3 === 0 && estado.saudeArvore >= 40) {
-        oferecerUpgrades();
-    } else {
-        avançarDia();
-    }
-}
-
-function avançarDia() {
-    let custoAgua = upgradesAtivos.perdaAguaReduzida ? 5 : 8;
-    let custoEnergia = upgradesAtivos.perdaEnergiaReduzida ? 5 : 8;
-
-    estado.temperaturaEstufa -= 4;
-
-    if (estado.temperaturaEstufa <= 10) {
-        custoAgua *= 2; // Canos racham pelo frio latente, dobrando o consumo
-    }
-
-    estado.agua -= custoAgua; 
-    estado.energia -= custoEnergia;
-
-    if (estado.dia === 3 && estadoAnterior.energia < 60) {
-        estado.eficienciaPaineis = 75; // Poeira acumula limitando o teto elétrico
-    }
-
-    estado.energia = Math.min(estado.eficienciaPaineis, estado.energia);
-    
-    if (estado.agua < 20 || estado.energia < 20 || estado.saudeArvore < 20) {
-        conquistas.maximaEficiencia = false;
-    }
-
-    if (estado.agua <= 0 || estado.energia <= 0 || estado.temperaturaEstufa <= 0) {
-        
+        <p>M.O.N

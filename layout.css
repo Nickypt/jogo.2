@@ -1,178 +1,72 @@
 /* --- ARQUITETURA E FUNDO GLOBAL --- */
 body {
     background-color: #010402;
-    margin: 0;
-    padding: 15px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    overflow: hidden;
-    position: relative;
+    margin: 0; padding: 15px;
+    display: flex; justify-content: center; align-items: center;
+    height: 100vh; overflow: hidden; position: relative;
 }
 
-/* 🌐 Grade de fundo Sci-Fi tridimensional */
 .background-grid {
-    position: absolute;
-    width: 200%; height: 200%;
+    position: absolute; width: 200%; height: 200%;
     background-image: 
         linear-gradient(rgba(0, 255, 204, 0.03) 1px, transparent 1px),
         linear-gradient(90deg, rgba(0, 255, 204, 0.03) 1px, transparent 1px);
-    background-size: 50px 50px;
-    background-position: center;
-    transform: perspective(500px) rotateX(60deg);
-    top: -50%;
-    animation: gridScroll 20s linear infinite;
-    z-index: 1;
+    background-size: 50px 50px; background-position: center;
+    transform: perspective(500px) rotateX(60deg); top: -50%;
+    animation: gridScroll 20s linear infinite; z-index: 1;
 }
 
-/* O Painel Principal do Computador (Glassmorphism) */
 .terminal {
-    width: 100%;
-    max-width: 980px;
-    height: 600px;
-    background: rgba(4, 14, 12, 0.75);
-    border-radius: 16px;
-    padding: 35px;
-    box-sizing: border-box;
-    position: relative;
-    z-index: 10;
+    width: 100%; max-width: 980px; height: 600px;
+    background: rgba(4, 14, 12, 0.75); border-radius: 16px;
+    padding: 35px; box-sizing: border-box; position: relative; z-index: 10;
 }
 
-/* Tags de Metadados nos 4 Cantos */
-.corner-tag {
-    position: absolute;
-    font-size: 0.65rem;
-    letter-spacing: 1px;
-    pointer-events: none;
-}
+.corner-tag { position: absolute; font-size: 0.65rem; letter-spacing: 1px; pointer-events: none; }
 .top-left { top: 12px; left: 20px; }
 .top-right { top: 12px; right: 20px; }
 .bottom-left { bottom: 12px; left: 20px; }
 .bottom-right { bottom: 12px; right: 20px; }
 
-/* --- SEÇÃO DA TELA INICIAL --- */
-.painel-inicial-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    height: 100%;
-}
-.menu-sistema-topo {
-    display: flex;
-    justify-content: space-between;
-    font-size: 0.65rem;
-    padding-bottom: 8px;
-    letter-spacing: 1.5px;
-}
+/* --- MENU INICIAL --- */
+.painel-inicial-container { display: flex; flex-direction: column; justify-content: space-between; height: 100%; }
+.menu-sistema-topo { display: flex; justify-content: space-between; font-size: 0.65rem; padding-bottom: 8px; letter-spacing: 1.5px; }
 .bloco-titulo-inicial { text-align: center; margin-top: 15px; }
-.caixa-texto-intro {
-    padding: 18px 22px;
-    height: 190px;
-    border-radius: 6px;
-    font-size: 0.85rem;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    box-sizing: border-box;
-}
-.barra-carregamento-estetica {
-    width: 100%; height: 2px;
-    position: relative; overflow: hidden; border-radius: 2px; margin-top: 10px;
-}
+.caixa-texto-intro { padding: 18px 22px; height: 190px; border-radius: 6px; font-size: 0.85rem; display: flex; flex-direction: column; gap: 8px; box-sizing: border-box; }
+.barra-carregamento-estetica { width: 100%; height: 2px; position: relative; overflow: hidden; border-radius: 2px; margin-top: 10px; }
 .progresso-linha-cyber { position: absolute; width: 35%; height: 100%; }
 .container-botao-inicial { display: flex; justify-content: center; margin-top: 10px; }
 
-/* --- SEÇÃO DO PRÓLOGO NARRATIVO --- */
-.painel-prologo-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    height: 100%;
-    box-sizing: border-box;
-}
-.caixa-texto-prologo {
-    background-color: rgba(1, 4, 3, 0.4);
-    border: 1px dashed rgba(0, 255, 204, 0.2);
-    padding: 25px;
-    height: 380px;
-    overflow-y: auto;
-    font-size: 1.05rem;
-    line-height: 1.8;
-    border-radius: 8px;
-    box-shadow: inset 0 0 30px rgba(0,0,0,0.8);
-    box-sizing: border-box;
-}
-.container-botao-prologo {
-    display: flex;
-    justify-content: flex-end;
-    margin-top: 15px;
-}
+/* --- PRÓLOGO NARRATIVO COM GRID SPLIT --- */
+.painel-prologo-container { display: flex; flex-direction: column; justify-content: space-between; height: 100%; box-sizing: border-box; }
+.grade-prologo-cinema { display: grid; grid-template-columns: 1.2fr 1fr; gap: 25px; height: 380px; }
+.caixa-texto-prologo { background-color: rgba(1, 4, 3, 0.4); border: 1px dashed rgba(0, 255, 204, 0.15); padding: 22px; overflow-y: auto; font-size: 1rem; line-height: 1.7; border-radius: 8px; box-shadow: inset 0 0 30px rgba(0,0,0,0.8); box-sizing: border-box; }
+.container-botao-prologo { display: flex; justify-content: flex-end; margin-top: 15px; }
 
-/* --- SEÇÃO DO JOGO (DUAS COLUNAS) --- */
-.container-duplo {
-    display: grid;
-    grid-template-columns: 1fr 1.3fr;
-    gap: 35px;
-    height: 100%;
-}
-.painel-esquerdo {
-    padding-right: 25px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
+.painel-holograma-planta { display: flex; flex-direction: column; gap: 15px; background: rgba(0, 20, 15, 0.2); border: 1px solid rgba(0, 255, 204, 0.15); border-radius: 8px; padding: 20px; box-sizing: border-box; align-items: center; justify-content: center; }
+.moldura-holograma { position: relative; width: 180px; height: 180px; display: flex; align-items: center; justify-content: center; background: radial-gradient(circle, rgba(0,255,204,0.1) 0%, transparent 70%); border-radius: 50%; overflow: hidden; }
+.imagem-planta-holo { max-width: 100%; max-height: 100%; object-fit: contain; filter: drop-shadow(0 0 12px rgba(0, 255, 204, 0.6)) saturate(1.2); }
+.linha-laser-scan { position: absolute; left: 0; width: 100%; height: 2px; background: #00ffcc; box-shadow: 0 0 10px #00ffcc; animation: radarScanAnim 2.5s linear infinite; }
+.dados-telemetria-rapida { display: flex; flex-direction: column; gap: 4px; font-size: 0.7rem; color: rgba(0, 255, 204, 0.5); width: 100%; letter-spacing: 1px; border-top: 1px dashed rgba(0, 255, 204, 0.2); padding-top: 10px; }
 
-/* Container de Exibição Holográfica da Imagem */
-.wrapper-imagem-planta {
-    position: relative;
-    background-color: rgba(0, 20, 15, 0.2);
-    border: 1px solid rgba(0, 255, 204, 0.15);
-    border-radius: 8px;
-    height: 130px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-}
-.imagem-planta-cyber {
-    height: 110px;
-    width: auto;
-    object-fit: contain;
-    z-index: 5;
-}
-.radar-scan { position: absolute; left: 0; width: 100%; height: 35%; }
+/* --- CORE GAMEPLAY (DUAS COLUNAS) --- */
+.container-duplo { display: grid; grid-template-columns: 1fr 1.3fr; gap: 35px; height: 100%; }
+.painel-esquerdo { padding-right: 25px; display: flex; flex-direction: column; justify-content: space-between; }
+.wrapper-arvore { position: relative; border-radius: 8px; padding: 10px; margin-bottom: 20px; overflow: hidden; background-color: rgba(0, 20, 15, 0.2); border: 1px solid rgba(0, 255, 204, 0.1); display: flex; justify-content: center; align-items: center; }
 
-/* Container do Gráfico de Linhas */
-.wrapper-grafico {
-    border-radius: 6px;
-    padding: 5px;
-    background: rgba(0, 5, 3, 0.3);
-    border: 1px solid rgba(0, 255, 204, 0.05);
-}
-.grafico-linhas {
-    font-size: 0.8rem;
-    line-height: 1.1;
-    height: 65px;
-    margin: 5px 0;
-    display: flex;
-    align-items: flex-end;
-    justify-content: center;
-}
+.container-planta-gameplay { position: relative; width: 130px; height: 130px; display: flex; align-items: center; justify-content: center; }
+.planta-gameplay-img { max-width: 100%; max-height: 100%; object-fit: contain; filter: drop-shadow(0 0 8px rgba(0, 255, 204, 0.4)); }
+.radar-scan { position: absolute; left: 0; width: 100%; height: 3px; background: #00ffcc; box-shadow: 0 0 8px #00ffcc; animation: radarScanAnim 3s linear infinite; }
 
-.status-grupo { margin-bottom: 12px; }
-.label-wrapper { display: flex; justify-content: space-between; font-size: 0.7rem; margin-bottom: 3px; }
-.telemetria-rodape { display: flex; justify-content: space-between; font-size: 0.7rem; padding-top: 8px; }
-
+.status-grupo { margin-bottom: 15px; }
+.label-wrapper { display: flex; justify-content: space-between; font-size: 0.7rem; margin-bottom: 5px; }
+.telemetria-rodape { display: flex; justify-content: space-between; font-size: 0.7rem; padding-top: 12px; }
 .painel-direito { display: flex; flex-direction: column; }
 .caixa-texto { padding: 20px; height: 310px; overflow-y: auto; font-size: 0.95rem; border-radius: 6px; box-sizing: border-box; }
 .prompt-container { display: flex; align-items: center; padding: 12px 18px; border-radius: 6px; }
-#terminal-input { background: transparent; border: none; font-size: 0.95rem; width: 100%; outline: none; }
 
-/* --- OVERLAY DE DOCUMENTOS CONFIDENCIAIS --- */
-.overlay-documento {
-    position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
-    z-index: 100; display: flex; justify-content: center; align-items: center;
-}
+/* --- OVERLAY DE DOCUMENTOS --- */
+.overlay-documento { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: 100; display: flex; justify-content: center; align-items: center; }
 .pasta-recipiente { width: 90%; max-width: 720px; padding: 35px; border-radius: 12px; box-sizing: border-box; }
 #conteudo-documento { font-size: 1rem; height: 300px; overflow-y: auto; }
+
