@@ -1,72 +1,375 @@
 /* --- ARQUITETURA E FUNDO GLOBAL --- */
 body {
     background-color: #010402;
-    margin: 0; padding: 15px;
-    display: flex; justify-content: center; align-items: center;
-    height: 100vh; overflow: hidden; position: relative;
+    margin: 0;
+    padding: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+    box-sizing: border-box;
 }
 
+/* 🌐 Grade de fundo Sci-Fi tridimensional */
 .background-grid {
-    position: absolute; width: 200%; height: 200%;
+    position: absolute;
+    width: 200%; 
+    height: 200%;
     background-image: 
         linear-gradient(rgba(0, 255, 204, 0.03) 1px, transparent 1px),
         linear-gradient(90deg, rgba(0, 255, 204, 0.03) 1px, transparent 1px);
-    background-size: 50px 50px; background-position: center;
-    transform: perspective(500px) rotateX(60deg); top: -50%;
-    animation: gridScroll 20s linear infinite; z-index: 1;
+    background-size: 50px 50px;
+    background-position: center;
+    transform: perspective(500px) rotateX(60deg);
+    top: -50%;
+    animation: gridScroll 20s linear infinite;
+    z-index: 1;
 }
 
+/* O Painel Principal do Computador (Glassmorphism) */
 .terminal {
-    width: 100%; max-width: 980px; height: 600px;
-    background: rgba(4, 14, 12, 0.75); border-radius: 16px;
-    padding: 35px; box-sizing: border-box; position: relative; z-index: 10;
+    width: 100%;
+    max-width: 980px;
+    height: 600px;
+    background: rgba(4, 14, 12, 0.75);
+    border-radius: 16px;
+    padding: 35px;
+    box-sizing: border-box;
+    position: relative;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
-.corner-tag { position: absolute; font-size: 0.65rem; letter-spacing: 1px; pointer-events: none; }
+/* Tags de Metadados nos 4 Cantos Extremos do Monitor */
+.corner-tag {
+    position: absolute;
+    font-size: 0.65rem;
+    letter-spacing: 1px;
+    pointer-events: none;
+    font-family: 'Courier New', monospace;
+}
 .top-left { top: 12px; left: 20px; }
 .top-right { top: 12px; right: 20px; }
 .bottom-left { bottom: 12px; left: 20px; }
 .bottom-right { bottom: 12px; right: 20px; }
 
-/* --- MENU INICIAL --- */
-.painel-inicial-container { display: flex; flex-direction: column; justify-content: space-between; height: 100%; }
-.menu-sistema-topo { display: flex; justify-content: space-between; font-size: 0.65rem; padding-bottom: 8px; letter-spacing: 1.5px; }
-.bloco-titulo-inicial { text-align: center; margin-top: 15px; }
-.caixa-texto-intro { padding: 18px 22px; height: 190px; border-radius: 6px; font-size: 0.85rem; display: flex; flex-direction: column; gap: 8px; box-sizing: border-box; }
-.barra-carregamento-estetica { width: 100%; height: 2px; position: relative; overflow: hidden; border-radius: 2px; margin-top: 10px; }
-.progresso-linha-cyber { position: absolute; width: 35%; height: 100%; }
-.container-botao-inicial { display: flex; justify-content: center; margin-top: 10px; }
 
-/* --- PRÓLOGO DIVIDIDO EM 2 COM IMAGEM NARRATIVA --- */
-.painel-prologo-container { display: flex; flex-direction: column; justify-content: space-between; height: 100%; box-sizing: border-box; }
-.grade-prologo-cinema { display: grid; grid-template-columns: 1.2fr 1fr; gap: 25px; height: 380px; }
-.caixa-texto-prologo { background-color: rgba(1, 4, 3, 0.4); border: 1px dashed rgba(0, 255, 204, 0.15); padding: 22px; overflow-y: auto; font-size: 1rem; line-height: 1.7; border-radius: 8px; box-shadow: inset 0 0 30px rgba(0,0,0,0.8); box-sizing: border-box; }
-.container-botao-prologo { display: flex; justify-content: flex-end; margin-top: 15px; }
+/* --- ETAPA 1: DESIGN DA TELA INICIAL --- */
+.painel-inicial-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    width: 100%;
+    box-sizing: border-box;
+}
 
-.painel-holograma-planta { display: flex; flex-direction: column; gap: 15px; background: rgba(0, 20, 15, 0.2); border: 1px solid rgba(0, 255, 204, 0.15); border-radius: 8px; padding: 20px; box-sizing: border-box; align-items: center; justify-content: center; }
-.moldura-holograma { position: relative; width: 180px; height: 180px; display: flex; align-items: center; justify-content: center; background: radial-gradient(circle, rgba(0,255,204,0.1) 0%, transparent 70%); border-radius: 50%; overflow: hidden; }
-.imagem-planta-holo { max-width: 100%; max-height: 100%; object-fit: contain; filter: drop-shadow(0 0 12px rgba(0, 255, 204, 0.6)) saturate(1.2); }
-.linha-laser-scan { position: absolute; left: 0; width: 100%; height: 2px; background: #00ffcc; box-shadow: 0 0 10px #00ffcc; animation: radarScanAnim 2.5s linear infinite; }
-.dados-telemetria-rapida { display: flex; flex-direction: column; gap: 4px; font-size: 0.7rem; color: rgba(0, 255, 204, 0.5); width: 100%; letter-spacing: 1px; border-top: 1px dashed rgba(0, 255, 204, 0.2); padding-top: 10px; }
+.menu-sistema-topo {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.65rem;
+    padding-bottom: 8px;
+    letter-spacing: 1.5px;
+    width: 100%;
+    box-sizing: border-box;
+}
 
-/* --- TELA DO JOGO --- */
-.container-duplo { display: grid; grid-template-columns: 1fr 1.3fr; gap: 35px; height: 100%; }
-.painel-esquerdo { padding-right: 25px; display: flex; flex-direction: column; justify-content: space-between; }
-.wrapper-arvore { position: relative; border-radius: 8px; padding: 10px; margin-bottom: 20px; overflow: hidden; background-color: rgba(0, 20, 15, 0.2); border: 1px solid rgba(0, 255, 204, 0.1); display: flex; justify-content: center; align-items: center; }
+.status-bota-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
 
-.container-planta-gameplay { position: relative; width: 130px; height: 130px; display: flex; align-items: center; justify-content: center; }
-.planta-gameplay-img { max-width: 100%; max-height: 100%; object-fit: contain; filter: drop-shadow(0 0 8px rgba(0, 255, 204, 0.4)); }
-.radar-scan { position: absolute; left: 0; width: 100%; height: 3px; background: #00ffcc; box-shadow: 0 0 8px #00ffcc; animation: radarScanAnim 3s linear infinite; z-index: 4; }
+.bloco-titulo-inicial { 
+    text-align: center; 
+    margin-top: 10px;
+    position: relative;
+    padding: 10px 0;
+}
 
-.status-grupo { margin-bottom: 15px; }
-.label-wrapper { display: flex; justify-content: space-between; font-size: 0.7rem; margin-bottom: 5px; }
-.telemetria-rodape { display: flex; justify-content: space-between; font-size: 0.7rem; padding-top: 12px; }
-.painel-direito { display: flex; flex-direction: column; }
-.caixa-texto { padding: 20px; height: 310px; overflow-y: auto; font-size: 0.95rem; border-radius: 6px; box-sizing: border-box; }
-.prompt-container { display: flex; align-items: center; padding: 12px 18px; border-radius: 6px; }
+.decoracao-linhar-cyber {
+    width: 60px;
+    height: 1px;
+    margin: 0 auto;
+}
+.top-line { margin-bottom: 8px; }
+.bottom-line { margin-top: 8px; }
 
-/* --- OVERLAY DE DOCUMENTOS --- */
-.overlay-documento { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: 100; display: flex; justify-content: center; align-items: center; }
-.pasta-recipiente { width: 90%; max-width: 720px; padding: 35px; border-radius: 12px; box-sizing: border-box; }
-#conteudo-documento { font-size: 1rem; height: 300px; overflow-y: auto; }
+.caixa-texto-intro {
+    padding: 20px 24px;
+    height: 190px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+.barra-carregamento-estetica {
+    width: 100%; 
+    height: 2px;
+    position: relative; 
+    overflow: hidden; 
+    border-radius: 2px; 
+    margin-top: 5px;
+    box-sizing: border-box;
+}
+.progresso-linha-cyber { 
+    position: absolute; 
+    width: 40%; 
+    height: 100%; 
+}
+
+.container-botao-inicial { 
+    display: flex; 
+    justify-content: center; 
+    margin-top: 5px; 
+}
+
+
+/* --- ETAPA 2: PRÓLOGO CINEMATOGRÁFICO DIVIDIDO --- */
+.painel-prologo-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.grade-prologo-cinema {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 25px;
+    height: 380px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.caixa-texto-prologo {
+    padding: 22px;
+    overflow-y: auto;
+    font-size: 1rem;
+    line-height: 1.7;
+    border-radius: 8px;
+    box-sizing: border-box;
+    height: 100%;
+}
+
+.painel-holograma-planta {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    border-radius: 8px;
+    padding: 20px;
+    box-sizing: border-box;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+}
+
+.moldura-holograma {
+    position: relative;
+    width: 180px;
+    height: 180px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.imagem-planta-holo {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+.linha-laser-scan {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 2px;
+}
+
+.dados-telemetria-rapida {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    font-size: 0.7rem;
+    width: 100%;
+    letter-spacing: 1px;
+    padding-top: 10px;
+    box-sizing: border-box;
+}
+
+.container-botao-prologo {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 15px;
+}
+
+
+/* --- ETAPA 3: TELA DE GAMEPLAY (DUAS COLUNAS) --- */
+.container-duplo {
+    display: grid;
+    grid-template-columns: 1fr 1.3fr;
+    gap: 35px;
+    height: 100%;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.painel-esquerdo {
+    padding-right: 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    box-sizing: border-box;
+}
+
+.wrapper-arvore {
+    position: relative;
+    border-radius: 8px;
+    padding: 10px;
+    margin-bottom: 20px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 160px;
+    box-sizing: border-box;
+}
+
+.container-planta-gameplay {
+    position: relative;
+    width: 130px;
+    height: 130px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.planta-gameplay-img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+.radar-scan {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    z-index: 4;
+}
+
+.status-grupo {
+    margin-bottom: 15px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.label-wrapper {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.7rem;
+    margin-bottom: 5px;
+    width: 100%;
+}
+
+.barra {
+    font-size: 1.1rem;
+    letter-spacing: 4px;
+    width: 100%;
+}
+
+.telemetria-rodape {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.7rem;
+    padding-top: 12px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.painel-direito {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    box-sizing: border-box;
+}
+
+.caixa-texto {
+    padding: 20px;
+    height: 310px;
+    overflow-y: auto;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 15px;
+    border-radius: 6px;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+.prompt-container {
+    display: flex;
+    align-items: center;
+    padding: 12px 18px;
+    border-radius: 6px;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+
+/* --- OVERLAY EM TELA CHEIA: DOCUMENTOS --- */
+.overlay-documento {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 100;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+.pasta-recipiente {
+    width: 90%;
+    max-width: 720px;
+    padding: 35px;
+    border-radius: 12px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+}
+
+.linha-decorativa {
+    margin: 18px 0;
+}
+
+#conteudo-documento {
+    font-size: 1rem;
+    line-height: 1.7;
+    height: 300px;
+    overflow-y: auto;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+
+/* --- UTILS --- */
+.escondido {
+    display: none !important;
+}
 
