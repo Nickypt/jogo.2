@@ -57,7 +57,6 @@ body {
 .bottom-left { bottom: 12px; left: 20px; }
 .bottom-right { bottom: 12px; right: 20px; }
 
-
 /* --- ETAPA 1: DESIGN DA TELA INICIAL --- */
 .painel-inicial-container {
     display: flex;
@@ -67,7 +66,6 @@ body {
     width: 100%;
     box-sizing: border-box;
 }
-
 .menu-sistema-topo {
     display: flex;
     justify-content: space-between;
@@ -77,20 +75,17 @@ body {
     width: 100%;
     box-sizing: border-box;
 }
-
 .status-bota-wrapper {
     display: flex;
     align-items: center;
     gap: 6px;
 }
-
 .bloco-titulo-inicial { 
     text-align: center; 
     margin-top: 10px;
     position: relative;
     padding: 10px 0;
 }
-
 .decoracao-linhar-cyber {
     width: 60px;
     height: 1px;
@@ -110,7 +105,6 @@ body {
     box-sizing: border-box;
     width: 100%;
 }
-
 .barra-carregamento-estetica {
     width: 100%; 
     height: 2px;
@@ -125,13 +119,11 @@ body {
     width: 40%; 
     height: 100%; 
 }
-
 .container-botao-inicial { 
     display: flex; 
     justify-content: center; 
     margin-top: 5px; 
 }
-
 
 /* --- ETAPA 2: PRÓLOGO CINEMATOGRÁFICO DIVIDIDO --- */
 .painel-prologo-container {
@@ -142,7 +134,6 @@ body {
     width: 100%;
     box-sizing: border-box;
 }
-
 .grade-prologo-cinema {
     display: grid;
     grid-template-columns: 1.2fr 1fr;
@@ -151,7 +142,6 @@ body {
     width: 100%;
     box-sizing: border-box;
 }
-
 .caixa-texto-prologo {
     padding: 22px;
     overflow-y: auto;
@@ -161,7 +151,6 @@ body {
     box-sizing: border-box;
     height: 100%;
 }
-
 .painel-holograma-planta {
     display: flex;
     flex-direction: column;
@@ -174,7 +163,6 @@ body {
     height: 100%;
     width: 100%;
 }
-
 .moldura-holograma {
     position: relative;
     width: 180px;
@@ -185,20 +173,17 @@ body {
     border-radius: 50%;
     overflow: hidden;
 }
-
 .imagem-planta-holo {
     max-width: 100%;
     max-height: 100%;
     object-fit: contain;
 }
-
 .linha-laser-scan {
     position: absolute;
     left: 0;
     width: 100%;
     height: 2px;
 }
-
 .dados-telemetria-rapida {
     display: flex;
     flex-direction: column;
@@ -209,13 +194,11 @@ body {
     padding-top: 10px;
     box-sizing: border-box;
 }
-
 .container-botao-prologo {
     display: flex;
     justify-content: flex-end;
     margin-top: 15px;
 }
-
 
 /* --- ETAPA 3: TELA DE GAMEPLAY (DUAS COLUNAS) --- */
 .container-duplo {
@@ -226,7 +209,6 @@ body {
     width: 100%;
     box-sizing: border-box;
 }
-
 .painel-esquerdo {
     padding-right: 25px;
     display: flex;
@@ -235,7 +217,6 @@ body {
     height: 100%;
     box-sizing: border-box;
 }
-
 .wrapper-arvore {
     position: relative;
     border-radius: 8px;
@@ -248,7 +229,6 @@ body {
     height: 160px;
     box-sizing: border-box;
 }
-
 .container-planta-gameplay {
     position: relative;
     width: 130px;
@@ -257,13 +237,11 @@ body {
     align-items: center;
     justify-content: center;
 }
-
 .planta-gameplay-img {
     max-width: 100%;
     max-height: 100%;
     object-fit: contain;
 }
-
 .radar-scan {
     position: absolute;
     left: 0;
@@ -271,13 +249,11 @@ body {
     height: 3px;
     z-index: 4;
 }
-
 .status-grupo {
     margin-bottom: 15px;
     width: 100%;
     box-sizing: border-box;
 }
-
 .label-wrapper {
     display: flex;
     justify-content: space-between;
@@ -285,13 +261,11 @@ body {
     margin-bottom: 5px;
     width: 100%;
 }
-
 .barra {
     font-size: 1.1rem;
     letter-spacing: 4px;
     width: 100%;
 }
-
 .telemetria-rodape {
     display: flex;
     justify-content: space-between;
@@ -300,14 +274,12 @@ body {
     width: 100%;
     box-sizing: border-box;
 }
-
 .painel-direito {
     display: flex;
     flex-direction: column;
     height: 100%;
     box-sizing: border-box;
 }
-
 .caixa-texto {
     padding: 20px;
     height: 310px;
@@ -319,7 +291,6 @@ body {
     box-sizing: border-box;
     width: 100%;
 }
-
 .prompt-container {
     display: flex;
     align-items: center;
@@ -328,7 +299,6 @@ body {
     box-sizing: border-box;
     width: 100%;
 }
-
 
 /* --- OVERLAY EM TELA CHEIA: DOCUMENTOS --- */
 .overlay-documento {
@@ -343,7 +313,6 @@ body {
     align-items: center;
     box-sizing: border-box;
 }
-
 .pasta-recipiente {
     width: 90%;
     max-width: 720px;
@@ -353,11 +322,9 @@ body {
     display: flex;
     flex-direction: column;
 }
-
 .linha-decorativa {
     margin: 18px 0;
 }
-
 #conteudo-documento {
     font-size: 1rem;
     line-height: 1.7;
@@ -366,7 +333,6 @@ body {
     box-sizing: border-box;
     width: 100%;
 }
-
 
 /* --- UTILS --- */
 .escondido {

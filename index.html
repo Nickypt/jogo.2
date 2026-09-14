@@ -1,12 +1,12 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>M.O.N.O. - Protocolo Biosfera</title>
-    <!-- Carregando a arquitetura visual dividida -->
+    <!-- Carregando a arquitetura visual dividida em 3 partes -->
     <link rel="stylesheet" href="layout.css">
+    <link rel="stylesheet" href="interface.css">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -46,7 +46,7 @@
                 <div class="linha-log"><span class="prefixo-sys">[0.145] [ENV]:</span> Mapeando integridade da cúpula de quartzo... <span class="log-ok">[ESTÁVEL]</span></div>
                 <div class="linha-log"><span class="prefixo-sys">[0.590] [BIO]:</span> Escaneando assinaturas térmicas humanas... <span class="log-erro">[FALHA - ZERO CONTATOS]</span></div>
                 <div class="linha-log"><span class="prefixo-sys">[0.881] [WARN]:</span> Alerta: Biosfera Central operando com largura de banda crítica.</div>
-                <div class="linha-log-final"><span class="prefixo-sys">[1.000] [READY]:</span> Conexão disponível. Clique no botão abaixo ou digite <b style="color:#ffcc00">/retomar</b> no terminal do jogo (se já tiver um save).</div>
+                <div class="linha-log-final"><span class="prefixo-sys">[1.000] [READY]:</span> Conexão disponível. Clique no botão abaixo ou digite <b style="color:#ffcc00">/retomar</b> para restaurar um backup.</div>
             </div>
 
             <div class="barra-carregamento-estetica">
@@ -74,9 +74,9 @@
                         <div class="linha-laser-scan"></div>
                     </div>
                     <div class="dados-telemetria-rapida">
-                        <span>SP_ORIGEM: TERRA (COLAPSO TOTAL)</span>
-                        <span>GEN: SEQUOIADENDRON_MARS_M1</span>
-                        <span>STATUS: TAXA VITAL CRÍTICA</span>
+                        <span>SP_ORIGEM: TERRA (EXTINTA)</span>
+                        <span>GEN: SEQUOIADENDRON_M1</span>
+                        <span>STATUS: CRÍTICO</span>
                     </div>
                 </div>
             </div>
@@ -88,7 +88,7 @@
             </div>
         </div>
 
-        <!-- ETAPA 3: TELA DO JOGO EM DUAS COLUNAS -->
+        <!-- TELA DO JOGO EM DUAS COLUNAS -->
         <div id="tela-jogo" class="escondido container-duplo">
             
             <!-- PAINEL ESQUERDO: TELEMETRIA DA ÁRVORE -->

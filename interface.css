@@ -1,0 +1,189 @@
+/* --- IDENTIDADE VISUAL: PALETA QUÂNTICA FRIA --- */
+body {
+    color: #e6f0fa;
+}
+
+/* O Painel Principal (Efeito Vidro Translúcido) */
+.terminal {
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    background: linear-gradient(135deg, rgba(10, 20, 28, 0.85) 0%, rgba(5, 10, 15, 0.95) 100%);
+    backdrop-filter: blur(20px) saturate(140%);
+    -webkit-backdrop-filter: blur(20px) saturate(140%);
+}
+
+.corner-tag { 
+    color: rgba(230, 240, 250, 0.3); 
+    font-weight: 600;
+}
+
+/* --- TELA INICIAL (MENU PRINCIPAL) --- */
+.menu-sistema-topo { 
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08); 
+    color: rgba(230, 240, 250, 0.4);
+}
+.ponto-piscante-on { color: #00ffaa; }
+
+.decoracao-linhar-cyber {
+    background-color: rgba(0, 255, 204, 0.3);
+}
+
+.titulo-inicial {
+    color: #ffffff;
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+}
+.subtitulo { 
+    color: rgba(230, 240, 250, 0.4); 
+    letter-spacing: 4px; 
+    font-size: 0.75rem;
+}
+
+.caixa-texto-intro {
+    border: 1px solid rgba(255, 255, 255, 0.06); 
+    background-color: rgba(0, 0, 0, 0.3);
+}
+.prefixo-sys { color: rgba(230, 240, 250, 0.3); }
+.linha-log { color: rgba(230, 240, 250, 0.7); }
+.linha-log-final { color: #ffffff; }
+.log-ok { color: #00ffaa; }
+.log-erro { color: #ff4d66; }
+
+.barra-carregamento-estetica { background: rgba(255, 255, 255, 0.05); }
+
+/* Botão Conexão Neural (Minimalista) */
+.botao-cyber-inicial {
+    background: transparent; 
+    border: 1px solid rgba(255, 255, 255, 0.3); 
+    color: #ffffff; 
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    letter-spacing: 2px;
+    font-family: 'Courier New', monospace;
+    font-weight: bold;
+}
+.botao-cyber-inicial:hover {
+    background: #ffffff; 
+    color: #050a0f;
+    border-color: #ffffff;
+    box-shadow: 0 0 30px rgba(255, 255, 255, 0.4); 
+}
+
+/* --- TELEMETRIA E GAMEPLAY --- */
+.interface-header { 
+    border-left: 2px solid rgba(255, 255, 255, 0.4); 
+    color: rgba(230, 240, 250, 0.4); 
+    letter-spacing: 2px;
+    font-weight: bold;
+    padding-left: 10px;
+}
+.painel-esquerdo { border-right: 1px solid rgba(255, 255, 255, 0.06); }
+
+.wrapper-arvore { 
+    background-color: rgba(255, 255, 255, 0.02); 
+    border: 1px solid rgba(255, 255, 255, 0.06); 
+}
+.imagem-planta-holo, .planta-gameplay-img {
+    filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.5));
+}
+.radar-scan, .linha-laser-scan { 
+    background: linear-gradient(to bottom, transparent, rgba(255, 255, 255, 0.1)); 
+    border-bottom: 1px solid rgba(255, 255, 255, 0.4); 
+}
+
+.label-wrapper label { color: rgba(230, 240, 250, 0.5); letter-spacing: 1.5px; }
+.barra { 
+    color: #ffffff;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.3); 
+}
+.telemetria-rodape { 
+    color: rgba(230, 240, 250, 0.3); 
+    border-top: 1px dashed rgba(255, 255, 255, 0.1); 
+}
+
+/* Console de Texto e Input */
+.caixa-texto { 
+    background-color: rgba(0, 0, 0, 0.2); 
+    border: 1px solid rgba(255, 255, 255, 0.06); 
+}
+.prompt-container { 
+    background-color: rgba(0, 0, 0, 0.4); 
+    border: 1px solid rgba(255, 255, 255, 0.08); 
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); 
+}
+.prompt-simbolo { color: rgba(230, 240, 250, 0.6); font-weight: bold; }
+#terminal-input { color: #ffffff; font-family: 'Courier New', monospace; }
+#terminal-input::placeholder { color: rgba(230, 240, 250, 0.15); }
+
+/* Botões do Console */
+button:not(.botao-cyber-inicial):not(.btn-fechar-doc) {
+    background: rgba(255, 255, 255, 0.03); 
+    border: 1px solid rgba(255, 255, 255, 0.15); 
+    color: rgba(230, 240, 250, 0.8);
+    font-family: 'Courier New', monospace;
+    font-weight: bold;
+    border-radius: 4px;
+}
+button:not(.botao-cyber-inicial):not(.btn-fechar-doc):hover { 
+    background: rgba(255, 255, 255, 0.08); 
+    border-color: rgba(255, 255, 255, 0.4);
+    color: #ffffff;
+}
+
+/* ALERTAS SUTIS */
+.alerta-erro { color: #ff4d66; font-weight: bold; }
+.alerta-aviso { color: #ffaa00; }
+.alerta-sucesso { color: #00ffaa; }
+.tend-sobe { color: #00ffaa; }
+.tend-desce { color: #ff4d66; }
+
+/* OVERLAY DE LOGS CONFIDENCIAIS (Laranja Restrito) */
+.overlay-documento { background-color: rgba(4, 6, 10, 0.98); }
+.pasta-recipiente { 
+    background-color: #0f0a05; 
+    backdrop-filter: blur(20px); 
+    border: 1px solid rgba(255, 170, 0, 0.3); 
+    box-shadow: 0 30px 70px rgba(0, 0, 0, 0.7); 
+    color: #ffebcc; 
+}
+.linha-decorativa { border-top: 1px dashed rgba(255, 170, 0, 0.15); }
+.btn-fechar-doc { 
+    border-color: rgba(255, 170, 0, 0.4) !important; 
+    color: #ffaa00 !important; 
+    background: transparent !important; 
+}
+.btn-fechar-doc:hover { 
+    background: #ffaa00 !important; 
+    color: #0f0a05 !important; 
+    box-shadow: 0 0 30px rgba(255, 170, 0, 0.3) !important; 
+}
+
+/* --- DESIGN DINÂMICO DOS FINAIS MONOCROMÁTICOS --- */
+.final-esmeralda { 
+    background: linear-gradient(135deg, #05140f 0%, #020805 100%) !important; 
+    border-color: rgba(0, 255, 170, 0.4) !important; 
+    color: #d1f5ea !important; 
+    box-shadow: 0 0 60px rgba(0, 255, 170, 0.1) !important; 
+}
+.final-esmeralda button { border-color: #00ffaa; color: #00ffaa; }
+
+.final-ambar { 
+    background: linear-gradient(135deg, #140f05 0%, #080502 100%) !important; 
+    border-color: rgba(255, 170, 0, 0.3) !important; 
+    color: #f5ebd1 !important; 
+    box-shadow: 0 0 60px rgba(255, 170, 0, 0.1) !important; 
+}
+.final-ambar button { border-color: #ffaa00; color: #ffaa00; }
+
+.final-sacrificio { 
+    background: linear-gradient(135deg, #14050a 0%, #080204 100%) !important; 
+    border-color: rgba(255, 77, 102, 0.3) !important; 
+    color: #f5d1d7 !important; 
+    box-shadow: 0 0 60px rgba(255, 77, 102, 0.1) !important; 
+}
+.final-sacrificio button { border-color: #ff4d66; color: #ff4d66; }
+
+.final-morte { 
+    background: #030305 !important; 
+    border-color: #222226 !important; 
+    color: #55555c !important; 
+    box-shadow: none !important; 
+    filter: grayscale(100%); 
+}
