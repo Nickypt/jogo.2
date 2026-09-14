@@ -8,72 +8,111 @@
 </head>
 <body>
 
+    <!-- Linhas e grade cibernética flutuando ao fundo -->
+    <div class="background-grid"></div>
+
     <div class="terminal">
         
+        <!-- Detalhes de Charme das Bordas do Painel -->
+        <div class="corner-tag top-left">ARES-IV // NUCLEUS</div>
+        <div class="corner-tag top-right">SYS_STATUS: ACTIVE</div>
+        <div class="corner-tag bottom-left">SECURE_LINE_0x99</div>
+        <div class="corner-tag bottom-right">MODEL: M.O.N.O._v1.04</div>
+
         <!-- TELA INICIAL CENTRALIZADA -->
         <div id="tela-inicial">
-            <h1 class="titulo-inicial">M.O.N.O. v1.0.4 - ARES IV</h1>
-            <p class="subtitulo">[DIRETRIZ DE PROTEÇÃO BIOLÓGICA ATIVADA]</p>
+            <h1 class="titulo-inicial">M.O.N.O. v1.0.4</h1>
+            <p class="subtitulo">[DIRETRIZ DE PROTEÇÃO BIOLÓGICA DE ALTA PRIORIDADE]</p>
             
             <div class="caixa-texto-intro">
-                [SISTEMA]: Núcleo de IA em suspensão criogênica...<br>
-                [SISTEMA]: Aguardando pulso elétrico para varredura de dados ambientais.
+                <span class="prefixo-sys">[SYSTEM_BOOT]:</span> Analisando atmosfera marciana... [OK]<br>
+                <span class="prefixo-sys">[SYSTEM_BOOT]:</span> Varredura de assinaturas vitais humanas... [FALHA - ZERO CONTATOS]<br>
+                <span class="prefixo-sys">[SYSTEM_BOOT]:</span> Aguardando inicialização manual do operador neural para acoplamento de consciência.
             </div>
             
             <button id="btn-iniciar" onclick="inicializarSistema()">
-                > INICIALIZAR NÚCLEO M.O.N.O. <
+                > CONECTAR AO RECEPTOR NEURAL <
             </button>
         </div>
 
-        <!-- TELA DO JOGO EM DUAS COLUNAS (Fica escondida no início) -->
+        <!-- TELA DO JOGO EM DUAS COLUNAS -->
         <div id="tela-jogo" class="escondido container-duplo">
             
             <!-- PAINEL ESQUERDO: TELEMETRIA DA ÁRVORE -->
             <div class="painel-esquerdo">
-                <div class="interface-header">[ DIAGNÓSTICO_GÊNESIS ]</div>
+                <div class="interface-header">> TELEMETRIA BIOMÉTRICA</div>
                 
-                <pre class="ascii-arvore">
+                <div class="wrapper-arvore">
+                    <pre class="ascii-arvore">
       #####
     #######
   ###########
      |||
      |||
    ======  
-                </pre>
+                    </pre>
+                    <div class="radar-scan"></div>
+                </div>
 
                 <div class="status-grupo">
-                    <label>INTEGRIDADE VITAL <span id="tend-saude" class="piscar"></span></label>
+                    <div class="label-wrapper">
+                        <label>INTEGRIDADE VITAL</label>
+                        <span id="tend-saude" class="piscar"></span>
+                    </div>
                     <div id="bar-saude" class="barra">░░░░░░░░░░</div>
                 </div>
                 <div class="status-grupo">
-                    <label>RESERVATÓRIO H2O <span id="tend-agua" class="piscar"></span></label>
+                    <div class="label-wrapper">
+                        <label>RESERVATÓRIO H2O</label>
+                        <span id="tend-agua" class="piscar"></span>
+                    </div>
                     <div id="bar-agua" class="barra">░░░░░░░░░░</div>
                 </div>
                 <div class="status-grupo">
-                    <label>NÚCLEO DE ENERGIA <span id="tend-energia" class="piscar"></span></label>
+                    <div class="label-wrapper">
+                        <label>NÚCLEO DE ENERGIA</label>
+                        <span id="tend-energia" class="piscar"></span>
+                    </div>
                     <div id="bar-energia" class="barra">░░░░░░░░░░</div>
                 </div>
                 
                 <div class="telemetria-rodape">
-                    <span>SETOR: MARTE_ARES_IV</span>
+                    <span>COORDS: 14.7°N, 120.4°E</span>
                     <span id="val-dia">CICLO: 01/15</span>
                 </div>
             </div>
 
             <!-- PAINEL DIREITO: CONSOLE DE TEXTO E INPUT DE COMANDO -->
             <div class="painel-direito">
-                <div class="interface-header">[ CONSOLE_DE_LOGS ]</div>
+                <div class="interface-header">> TERMINAL DE OPERAÇÕES ORBITAIS</div>
                 <div class="caixa-texto" id="log-jogo"></div>
                 
-                <!-- Nova linha de comando interativa estilo hacker -->
+                <!-- Prompt estilo hacker futurista -->
                 <div class="prompt-container">
-                    <span class="prompt-simbolo">M.O.N.O.:~$</span>
-                    <input type="text" id="terminal-input" autofocus placeholder="Digite um comando..." autocomplete="off">
+                    <span class="prompt-simbolo">AI_KERNEL://</span>
+                    <input type="text" id="terminal-input" autofocus placeholder="Digite uma diretriz..." autocomplete="off">
                 </div>
             </div>
 
         </div>
 
+    </div>
+
+    <!-- TELA HOLOGRÁFICA DE DOCUMENTO CONFIDENCIAL -->
+    <div id="tela-documento" class="escondido overlay-documento">
+        <div class="pasta-recipiente">
+            <div class="interface-header" style="color: #ffaa00; margin-bottom: 5px;">
+                > CRITICAL DATA OVERRIDE // DECRYPTED_SUCCESSFULLY
+            </div>
+            <div class="linha-decorativa"></div>
+            
+            <div id="conteudo-documento"></div>
+            
+            <div class="linha-decorativa"></div>
+            <button class="btn-fechar-doc" onclick="fecharDocumento()">
+                > FECHAR FLUXO DE DADOS (ABORT_VIEW)
+            </button>
+        </div>
     </div>
 
     <!-- Scripts carregados em ordem estrita de dependência -->

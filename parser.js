@@ -35,7 +35,7 @@ function processarComandoTerminal(comando) {
 
     // Fluxo D: Comando para iniciar descriptografia
     if (comando === "/descriptografar") {
-        if (typeof diariosElena !== 'undefined' && diariosElena[estado.dia]) {
+        if (typeof diariosElena !== 'undefined' && diariesElena !== null && diariosElena[estado.dia]) {
             if (estado.energia >= 25) {
                 iniciarMinijogoHack();
             } else {
@@ -66,7 +66,7 @@ function processarComandoTerminal(comando) {
             <p class="alerta-aviso">----------------------------------------</p>
         `;
 
-        if (typeof diariosElena !== 'undefined' && diariosElena[estado.dia]) {
+        if (typeof diariosElena !== 'undefined' && diariesElena !== null && diariosElena[estado.dia]) {
             log.innerHTML += `<p class="alerta-aviso">> ALERTA: Arquivo de log oculto detectado. Digite <b style='color:#ffcc00'>/descriptografar</b> para tentar acessá-lo.</p>`;
         }
 
@@ -79,7 +79,7 @@ function processarComandoTerminal(comando) {
 }
 
 // Lógica de turnos internos para o minijogo de adivinhação estável
-function ejecutarTurnoMinijogo(comando) {
+function executarTurnoMinijogo(comando) {
     const palpite = parseInt(comando);
     const log = document.getElementById("log-jogo");
 
@@ -95,11 +95,11 @@ function ejecutarTurnoMinijogo(comando) {
         estado.energia = Math.max(0, estado.energia - 20);
         atualizarPainelVisual();
         
+        abrirTelaDocumento(diariosElena[estado.dia]);
+        
         log.innerHTML = `
-            <h2 class="alerta-sucesso">> CONEXÃO ESTABELECIDA. DECRIPTAÇÃO CONCLUÍDA.</h2>
-            <p style="color: #ffeebb; font-style: italic; background-color: #120a02; padding: 15px; border: 1px dashed #ffaa00; line-height:1.6;">
-                ${diariosElena[estado.dia].replace(/\n/g, '<br><br>')}
-            </p>
+            <p class="alerta-sucesso">> BYPASS_CONCLUÍDA. Chave quebrada.</p>
+            <p>Os dados foram extraídos e exibidos na tela auxiliar.</p>
             <p>Digite <b style='color:#fff'>/proximo</b> para dar andamento ao ciclo noturno.</p>
         `;
     } else {

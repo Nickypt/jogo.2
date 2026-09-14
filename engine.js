@@ -50,6 +50,7 @@ function construirBarra(valor, maximo) {
     return "█".repeat(Math.max(0, preenchidos)) + "░".repeat(Math.max(0, vazios)) + ` (${valor})`;
 }
 
+// 📈 Calcula e exibe dinamicamente as setinhas de tendência
 function atualizarElementoTendencia(idElemento, valorAtual, valorAntigo) {
     const el = document.getElementById(idElemento);
     if (valorAtual > valorAntigo) {
@@ -66,7 +67,7 @@ function atualizarPainelVisual() {
     
     const barSaude = document.getElementById("bar-saude");
     barSaude.innerText = construirBarra(estado.saudeArvore, 100);
-    barSaude.style.color = estado.saudeArvore < 30 ? "#ff3333" : "#39ff14";
+    barSaude.style.color = estado.saudeArvore < 30 ? "#ff3366" : "#00ffcc";
     
     document.getElementById("bar-agua").innerText = construirBarra(estado.agua, 100);
     document.getElementById("bar-energia").innerText = construirBarra(estado.energia, 100);
@@ -80,6 +81,7 @@ function começarDia() {
     atualizarPainelVisual();
     if (typeof verificarFimDeJogo === 'function' && verificarFimDeJogo()) return;
 
+    // Fixa o patamar do início do dia como referência de tendência anterior
     estadoAnterior = { ...estado };
     modoMinijogo = false;
     modoUpgrade = false;
@@ -96,7 +98,7 @@ function começarDia() {
         `;
     } else {
         log.innerHTML = `
-            <p>[SISTEMA]: Ciclo ${estado.dia} sem anomalias externas detectadas.</p>
+            <p>[SISTEMA]: Ciclo ${estado.dia} sem anomalias externas graves reportadas.</p>
             <p>Digite <b style='color:#fff'>/prosseguir</b> para avançar à recarga noturna.</p>
         `;
     }
@@ -111,7 +113,7 @@ function iniciarMinijogoHack() {
     const log = document.getElementById("log-jogo");
     log.innerHTML = `
         <h2 class="alerta-aviso">[ROUTINE: CRACKING_OVERRIDE_INIT]</h2>
-        <p><b>M.O.N.O.:</b> Forçando bypass no firewall de arquivos da Dra. Elena. O algoritmo de segurança exige uma chave numérica de sincronia estável entre <b>1 e 50</b>.</p>
+        <p><b>M.O.N.O.:</b> Forçando bypass no firewall de arquivos da Dra. Elena. O algoritmo exige uma chave numérica estável entre <b>1 e 50</b>.</p>
         <p class="alerta-erro">> Integridade do bypass: 5 tentativas antes do bloqueio definitivo.</p>
         <p>Digite uma estimativa numérica no terminal:</p>
     `;
@@ -154,4 +156,18 @@ function avançarDia() {
 
     estado.dia += 1;
     começarDia();
+}
+
+// FUNÇÕES DE TRANSIÇÃO DA TELA DE DIÁRIO CONFIDENCIAL
+function abrirTelaDocumento(textoCompleto) {
+    const telaDoc = document.getElementById("tela-documento");
+    const conteudoDoc = document.getElementById("conteudo-documento");
+    conteudoDoc.innerHTML = textoCompleto.replace(/\n/g, '<br><br>');
+    telaDoc.classList.remove("escondido");
+}
+
+function fecharDocumento() {
+    const telaDoc = document.getElementById("tela-documento");
+    telaDoc.classList.add("escondido");
+    document.getElementById("terminal-input").focus();
 }
