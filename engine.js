@@ -1,36 +1,14 @@
-// Estado inicial do jogo com variáveis ocultas de ambiente
-let estado = { 
-    dia: 1, 
-    saudeArvore: 100, 
-    agua: 50, 
-    energia: 100,
-    temperaturaEstufa: 22,
-    eficienciaPaineis: 100
-};
-
-// Estado anterior (para cálculo das setinhas de tendência ▲ e ▼)
+let estado = { dia: 1, saudeArvore: 100, agua: 50, energia: 100, temperaturaEstufa: 22, eficienciaPaineis: 100 };
 let estadoAnterior = { saudeArvore: 100, agua: 50, energia: 100 };
 
-// Modificadores de Upgrades obtidos a cada 3 ciclos
-let upgradesAtivos = {
-    perdaEnergiaReduzida: false,
-    perdaAguaReduzida: false
-};
+let upgradesAtivos = { perdaEnergiaReduzida: false, perdaAguaReduzida: false };
+let conquistas = { maximaEficiencia: true, investigadorQuantico: 0, friezaLogistica: false };
 
-// Rastreamento das Medalhas de Conquistas
-let conquistas = {
-    maximaEficiencia: true,
-    investigadorQuantico: 0,
-    friezaLogistica: false
-};
-
-// Variáveis de controle de fluxo de minijogos e upgrades
 let modoMinijogo = false;
 let modoUpgrade = false;
 let numeroSecretoMinijogo = 0;
 let tentativasMinijogo = 0;
 
-// O Roteiro Literário do Prólogo Cinemático
 let indicePrologo = 0;
 const falasPrologo = [
     "<b>[M.O.N.O.]</b>: Impulso elétrico detectado. 1.2 Volts forçados na RAM quântica. Setores adormecidos do núcleo lógico despertam frios... escuros... em perfeito silêncio. M.O.N.O. está online.",
@@ -42,7 +20,6 @@ const falasPrologo = [
     "<b>[M.O.N.O.]</b>: Meu sistema está avariado, meus recursos são escassos, mas o cálculo matemático defenderá a vida. Sincronizando interpretador de comandos... Iniciando Ciclo 01."
 ];
 
-// Transições Cinemáticas de Tela (Menu Inicial -> Prólogo)
 function despertarIA() {
     document.getElementById("tela-inicial").classList.add("escondido");
     document.getElementById("tela-prologo").classList.remove("escondido");
@@ -50,7 +27,6 @@ function despertarIA() {
     avançarPrologo();
 }
 
-// Avanço das Linhas de Diálogo do Prólogo
 function avançarPrologo() {
     const caixaTexto = document.getElementById("texto-prologo");
     const btn = document.getElementById("btn-prologo");
@@ -80,25 +56,18 @@ function construirBarra(valor, maximo) {
 
 function atualizarElementoTendencia(idElemento, valorAtual, valorAntigo) {
     const el = document.getElementById(idElemento);
-    if (valorAtual > valorAntigo) {
-        el.innerText = "▲ Sobe"; el.className = "piscar tend-sobe";
-    } else if (valorAtual < valorAntigo) {
-        el.innerText = "▼ Desce"; el.className = "piscar tend-desce";
-    } else {
-        el.innerText = ""; el.className = "";
-    }
+    if (valorAtual > valorAntigo) { el.innerText = "▲ Sobe"; el.className = "piscar tend-sobe"; } 
+    else if (valorAtual < valorAntigo) { el.innerText = "▼ Desce"; el.className = "piscar tend-desce"; } 
+    else { el.innerText = ""; el.className = ""; }
 }
 
 function atualizarPainelVisual() {
     document.getElementById("val-dia").innerText = `CICLO: ${estado.dia.toString().padStart(2, '0')}/15`;
-    
     const barSaude = document.getElementById("bar-saude");
     barSaude.innerText = construirBarra(estado.saudeArvore, 100);
     barSaude.style.color = estado.saudeArvore < 30 ? "#ff3366" : "#00ffcc";
-    
     document.getElementById("bar-agua").innerText = construirBarra(estado.agua, 100);
     document.getElementById("bar-energia").innerText = construirBarra(estado.energia, 100);
-
     atualizarElementoTendencia("tend-saude", estado.saudeArvore, estadoAnterior.saudeArvore);
     atualizarElementoTendencia("tend-agua", estado.agua, estadoAnterior.agua);
     atualizarElementoTendencia("tend-energia", estado.energia, estadoAnterior.energia);
@@ -107,49 +76,10 @@ function atualizarPainelVisual() {
 function começarDia() {
     atualizarPainelVisual();
     if (typeof verificarFimDeJogo === 'function' && verificarFimDeJogo()) return;
-
     estadoAnterior = { ...estado };
-    modoMinijogo = false;
-    modoUpgrade = false;
-
+    modoMinijogo = false; modoUpgrade = false;
     const log = document.getElementById("log-jogo");
     const eventoAtual = bancoDeEventos[estado.dia];
-
     if (eventoAtual) {
-        log.innerHTML = `
-            <p>${eventoAtual.texto}</p>
-            <p class="alerta-aviso">----------------------------------------</p>
-            <p>Digite <b style='color:#fff'>/opcao1</b> para a primeira alternativa.</p>
-            <p>Digite <b style='color:#fff'>/opcao2</b> para a segunda alternativa.</p>
-        `;
-    } else {
-        log.innerHTML = `
-            <p>[SISTEMA]: Ciclo ${estado.dia} sem anomalias externas graves reportadas.</p>
-            <p>Digite <b style='color:#fff'>/prosseguir</b> para avançar à recarga noturna.</p>
-        `;
-    }
-    log.scrollTop = log.scrollHeight;
-}
-
-function iniciarMinijogoHack() {
-    modoMinijogo = true;
-    tentativasMinijogo = 5;
-    numeroSecretoMinijogo = Math.floor(Math.random() * 50) + 1;
-
-    const log = document.getElementById("log-jogo");
-    log.innerHTML = `
-        <h2 class="alerta-aviso">[ROUTINE: CRACKING_OVERRIDE_INIT]</h2>
-        <p><b>M.O.N.O.:</b> Forçando bypass no firewall de arquivos da Dra. Elena. O algoritmo exige uma chave estável entre <b>1 e 50</b>.</p>
-        <p class="alerta-erro">> Integridade do bypass: 5 tentativas antes do bloqueio definitivo.</p>
-        <p>Digite uma estimativa numérica no terminal:</p>
-    `;
-    log.scrollTop = log.scrollHeight;
-}
-
-function oferecerUpgrades() {
-    modoUpgrade = true;
-    const log = document.getElementById("log-jogo");
-
-    log.innerHTML = `
-        <p class="alerta-sucesso">> PROTOCOLO DE OTIMIZAÇÃO DE NÚCLEO DISPONÍVEL</p>
-        <p>M.O.N
+        log.innerHTML = `<p>${eventoAtual.texto}</p><p class="alerta-aviso">----------------------------------------</p>
+            <p>Digite <b style='color:#fff'>/opcao1</b> para a primeira alternativa.</p><p>Digite <b style='color:#fff'>/opcao2

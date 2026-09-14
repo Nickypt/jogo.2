@@ -1,11 +1,5 @@
-/* --- ESTÉTICA NEON, GLITCH E TEMAS DE FINAIS --- */
 body { color: #00ffcc; }
-
-.terminal {
-    border: 1px solid rgba(0, 255, 204, 0.25); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
-    box-shadow: 0 0 50px rgba(0, 255, 204, 0.1), inset 0 0 30px rgba(0, 255, 204, 0.05);
-}
-
+.terminal { border: 1px solid rgba(0, 255, 204, 0.25); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); box-shadow: 0 0 50px rgba(0, 255, 204, 0.1), inset 0 0 30px rgba(0, 255, 204, 0.05); }
 .corner-tag { color: rgba(0, 255, 204, 0.4); }
 
 .terminal::before {
@@ -16,46 +10,64 @@ body { color: #00ffcc; }
 
 .menu-sistema-topo { border-bottom: 1px solid rgba(0, 255, 204, 0.15); }
 .ponto-piscante-on { color: #00ff99; }
+.ponto-piscante-off { color: #ff3366; animation: piscarAnim 2s infinite; }
+.status-bota-wrapper { display: flex; align-items: center; gap: 6px; }
+.status-texto-core { color: rgba(0, 255, 204, 0.6); }
+
+.bloco-titulo-inicial { text-align: center; position: relative; padding: 10px 0; }
+.decoracao-linhar-cyber { width: 60px; height: 1px; background-color: rgba(0, 255, 204, 0.3); margin: 0 auto; }
+.top-line { margin-bottom: 8px; }
+.bottom-line { margin-top: 8px; }
+
 .titulo-inicial {
-    font-size: 3.5rem; font-weight: 900; letter-spacing: 12px; margin: 0; color: #00ffcc;
-    text-shadow: 0 0 15px rgba(0, 255, 204, 0.5), 0 0 30px rgba(0, 255, 204, 0.2); animation: glitcheffect 5s infinite alternate;
+    font-size: 3.8rem; font-weight: 900; letter-spacing: 16px; margin: 0; padding-left: 16px;
+    color: #00ffcc; text-shadow: 0 0 15px rgba(0, 255, 204, 0.6), 0 0 30px rgba(0, 255, 204, 0.2);
+    animation: glitcheffect 5s infinite alternate;
 }
 .subtitulo { color: rgba(0, 255, 204, 0.5); letter-spacing: 3px; }
 
-.caixa-texto-intro { border: 1px solid rgba(0, 255, 204, 0.15); background-color: rgba(1, 6, 5, 0.4); box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.6); }
+.caixa-texto-intro { border: 1px solid rgba(0, 255, 204, 0.15); background-color: rgba(1, 6, 5, 0.4); box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.7); }
 .linha-log { color: rgba(0, 255, 204, 0.8); }
-.linha-log-final { color: #00ffcc; }
+.linha-log-final { color: #00ffcc; font-weight: bold; margin-top: auto; }
 .log-ok { color: #00ff99; font-weight: bold; }
 .log-erro { color: #ff3366; font-weight: bold; }
 
-.barra-carregamento-estetica { background: rgba(0, 255, 204, 0.1); }
+.barra-carregamento-estetica { background: rgba(0, 255, 204, 0.08); }
 .progresso-linha-cyber { background: linear-gradient(90deg, transparent, #00ffcc, transparent); animation: scanDeLuz 2.5s ease-in-out infinite; }
 
 .botao-cyber-inicial {
-    background: rgba(0, 255, 204, 0.02); border: 1px solid #00ffcc; color: #00ffcc; letter-spacing: 2px;
-    box-shadow: 0 0 15px rgba(0, 255, 204, 0.1); transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); animation: pulsoBotaoInicial 2s infinite alternate;
+    background: rgba(0, 255, 204, 0.02); border: 1px solid #00ffcc; color: #00ffcc;
+    padding: 16px 45px; font-family: 'Courier New', monospace; font-size: 0.95rem; font-weight: bold;
+    letter-spacing: 2px; cursor: pointer; border-radius: 6px; text-transform: uppercase;
+    box-shadow: 0 0 15px rgba(0, 255, 204, 0.1); transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    animation: pulsoBotaoInicial 2s infinite alternate;
 }
-.botao-cyber-inicial:hover { background: rgba(0, 255, 204, 0.15); box-shadow: 0 0 25px rgba(0, 255, 204, 0.5), inset 0 0 10px rgba(0, 255, 204, 0.2); letter-spacing: 3px; }
+.botao-cyber-inicial:hover { background: rgba(0, 255, 204, 0.15); box-shadow: 0 0 25px rgba(0, 255, 204, 0.5), inset 0 0 10px rgba(0, 255, 204, 0.2); letter-spacing: 4px; padding-left: 47px; }
+
+.caixa-texto-prologo p { margin: 0 0 20px 0; color: rgba(0, 255, 204, 0.85); text-shadow: 0 0 4px rgba(0, 255, 204, 0.2); }
+.caixa-texto-prologo p b { color: #00ffcc; text-shadow: 0 0 8px rgba(0, 255, 204, 0.5); }
+.botao-prologo-avancar { background: rgba(0, 255, 204, 0.03); border: 1px solid rgba(0, 255, 204, 0.6); color: #00ffcc; padding: 12px 30px; font-family: 'Courier New', monospace; font-size: 0.85rem; font-weight: bold; cursor: pointer; border-radius: 4px; transition: all 0.3s ease; }
+.botao-prologo-avancar:hover { background: rgba(0, 255, 204, 0.15); box-shadow: 0 0 15px rgba(0, 255, 204, 0.3); border-color: #00ffcc; }
 
 .interface-header { border-left: 2px solid #00ffcc; padding-left: 8px; color: rgba(0, 255, 204, 0.5); letter-spacing: 2px; }
 .painel-esquerdo { border-right: 1px solid rgba(0, 255, 204, 0.15); }
-.ascii-arvore { color: #33ffcc; text-shadow: 0 0 10px rgba(51, 255, 204, 0.8); }
-
 .label-wrapper label { color: rgba(0, 255, 204, 0.6); letter-spacing: 1px; }
 .barra { letter-spacing: 4px; text-shadow: 0 0 8px rgba(0, 255, 204, 0.5); }
 .telemetria-rodape { color: rgba(0, 255, 204, 0.4); border-top: 1px dashed rgba(0, 255, 204, 0.2); }
-
 .caixa-texto { background-color: rgba(1, 4, 3, 0.7); border: 1px solid rgba(0, 255, 204, 0.2); }
 .prompt-container { background-color: rgba(1, 5, 4, 0.8); border: 1px solid rgba(0, 255, 204, 0.3); box-shadow: 0 0 15px rgba(0, 255, 204, 0.05); }
 .prompt-simbolo { color: #00ffcc; text-shadow: 0 0 8px rgba(0, 255, 204, 0.5); }
-#terminal-input { color: #00ffcc; text-shadow: 0 0 5px rgba(0, 255, 204, 0.5); font-family: 'Courier New', monospace; }
+#terminal-input { color: #00ffcc; text-shadow: 0 0 5px rgba(0, 255, 204, 0.5); }
 #terminal-input::placeholder { color: #123d12; }
 
-button:not(.botao-cyber-inicial):not(.btn-fechar-doc) {
-    background: rgba(0, 255, 204, 0.05); border: 1px solid #00ffcc; color: #00ffcc;
-    text-shadow: 0 0 5px rgba(0, 255, 204, 0.5); transition: all 0.3s ease;
-}
-button:not(.botao-cyber-inicial):not(.btn-fechar-doc):hover { background: rgba(0, 255, 204, 0.2); box-shadow: 0 0 20px rgba(0, 255, 204, 0.4); }
+button:not(.botao-cyber-inicial):not(.btn-fechar-doc):not(.botao-prologo-avancar) { background: rgba(0, 255, 204, 0.05); border: 1px solid #00ffcc; color: #00ffcc; text-shadow: 0 0 5px rgba(0, 255, 204, 0.5); transition: all 0.3s ease; }
+button:not(.botao-cyber-inicial):not(.btn-fechar-doc):not(.botao-prologo-avancar):hover { background: rgba(0, 255, 204, 0.2); box-shadow: 0 0 20px rgba(0, 255, 204, 0.4); }
+
+.alerta-erro { color: #ff3366; text-shadow: 0 0 10px rgba(255, 51, 102, 0.6); }
+.alerta-aviso { color: #ffcc00; text-shadow: 0 0 10px rgba(255, 204, 0, 0.5); }
+.alerta-sucesso { color: #00ff99; text-shadow: 0 0 10px rgba(0, 255, 153, 0.6); }
+.tend-sobe { color: #00ff99; }
+.tend-desce { color: #ff3366; }
 
 .overlay-documento { background-color: rgba(1, 3, 2, 0.97); }
 .pasta-recipiente { background-color: rgba(20, 10, 0, 0.8); backdrop-filter: blur(10px); border: 1px solid #ffaa00; box-shadow: 0 0 60px rgba(255, 170, 0, 0.2); color: #ffebcc; }
@@ -70,7 +82,7 @@ button:not(.botao-cyber-inicial):not(.btn-fechar-doc):hover { background: rgba(0
 
 @keyframes gridScroll { 0% { background-position: 0 0; } 100% { background-position: 0 1000px; } }
 @keyframes scanlineMovement { 0% { background-position: 0 0; } 100% { background-position: 0 100%; } }
-@keyframes scanDeLuz { 0% { left: -40%; } 100% { left: 110%; } }
+@keyframes scanDeLuz { 0% { left: -45%; } 100% { left: 115%; } }
 @keyframes radarScanAnim { 0% { top: -50%; } 100% { top: 100%; } }
 @keyframes bootScreen {
     0% { transform: scaleY(0.005) scaleX(0); filter: brightness(5); opacity: 0; }
@@ -83,8 +95,8 @@ button:not(.botao-cyber-inicial):not(.btn-fechar-doc):hover { background: rgba(0
     98% { text-shadow: 3px 0 #ff3366, -3px 0 #00ffff; transform: skew(3deg); }
 }
 @keyframes pulsoBotaoInicial {
-    0% { border-color: rgba(0, 255, 204, 0.4); box-shadow: 0 0 10px rgba(0, 255, 204, 0.05); }
-    100% { border-color: rgba(0, 255, 204, 1); box-shadow: 0 0 20px rgba(0, 255, 204, 0.2); }
+    0% { border-color: rgba(0, 255, 204, 0.3); box-shadow: 0 0 10px rgba(0, 255, 204, 0.05); }
+    100% { border-color: rgba(0, 255, 204, 1); box-shadow: 0 0 25px rgba(0, 255, 204, 0.25); }
 }
 
 .piscar { animation: piscarAnim 1.5s infinite; }

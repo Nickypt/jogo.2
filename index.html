@@ -4,41 +4,45 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>M.O.N.O. - Protocolo Biosfera</title>
-    <!-- Carregando a arquitetura visual dividida -->
     <link rel="stylesheet" href="layout.css">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- Linhas e grade cibernética flutuando ao fundo -->
     <div class="background-grid"></div>
 
     <div class="terminal">
         
-        <!-- Detalhes de Charme das Bordas do Painel -->
         <div class="corner-tag top-left">ARES-IV // NUCLEUS</div>
         <div class="corner-tag top-right" id="sys-status-tag">SYS_STATUS: SLEEP</div>
         <div class="corner-tag bottom-left">SECURE_LINE_0x99</div>
         <div class="corner-tag bottom-right">MODEL: M.O.N.O._v1.04</div>
 
-        <!-- ETAPA 1: TELA INICIAL (MENU DE AUTENTICAÇÃO) -->
+        <!-- ETAPA 1: TELA INICIAL (AUTENTICAÇÃO) -->
         <div id="tela-inicial" class="painel-inicial-container">
+            
             <div class="menu-sistema-topo">
-                <span class="ponto-piscante-off">● STANDBY_MODE</span>
+                <div class="status-bota-wrapper">
+                    <span class="ponto-piscante-off">●</span>
+                    <span class="status-texto-core">CORE_KERNEL: STANDBY</span>
+                </div>
                 <span>SECURE_DATA_PROTOCOL // ARES_IV</span>
-                <span>BOOT_SEQUENCE</span>
+                <span>SYSTEM_BOOT_SEQUENCE_v1.0.4</span>
             </div>
 
             <div class="bloco-titulo-inicial">
+                <div class="decoracao-linhar-cyber top-line"></div>
                 <h1 class="titulo-inicial">M.O.N.O.</h1>
-                <p class="subtitulo">[ CORE_KERNEL: INACTIVE // DIRECTIVE: RECOVERY_WAIT ]</p>
+                <p class="subtitulo">[ MATRIX OPERACIONAL DE NUTRIÇÃO ORGÂNICA ]</p>
+                <div class="decoracao-linhar-cyber bottom-line"></div>
             </div>
 
             <div class="caixa-texto-intro">
-                <div class="linha-log"><span class="prefixo-sys">[0.002]</span> Sincronizando receptores elétricos primários... <span class="log-ok">[OK]</span></div>
-                <div class="linha-log"><span class="prefixo-sys">[0.145]</span> Mapeando integridade da cúpula climática... <span class="log-ok">[ESTÁVEL]</span></div>
-                <div class="linha-log"><span class="prefixo-sys">[0.590]</span> Varredura de bio-assinaturas terrestres... <span class="log-erro">[ZERO_CONTACTS]</span></div>
-                <div class="linha-log-final"><span class="prefixo-sys">[READY]</span> Kernel pronto para acoplamento de consciência. Digite <b style="color:#ffcc00">/retomar</b> para carregar um backup existente.</div>
+                <div class="linha-log"><span class="prefixo-sys">[0.002] [SYS]:</span> Inicializando barramento elétrico residual... <span class="log-ok">[PRONTO]</span></div>
+                <div class="linha-log"><span class="prefixo-sys">[0.145] [ENV]:</span> Mapeando integridade da cúpula de quartzo... <span class="log-ok">[ESTÁVEL]</span></div>
+                <div class="linha-log"><span class="prefixo-sys">[0.590] [BIO]:</span> Escaneando assinaturas térmicas humanas... <span class="log-erro">[FALHA - ZERO CONTATOS]</span></div>
+                <div class="linha-log"><span class="prefixo-sys">[0.881] [WARN]:</span> Alerta: Biosfera Central operando com largura de banda crítica.</div>
+                <div class="linha-log-final"><span class="prefixo-sys">[1.000] [READY]:</span> Aguardando operador neural. Pressione o botão ou digite <b style="color:#ffcc00">/retomar</b> para restaurar um backup.</div>
             </div>
 
             <div class="barra-carregamento-estetica">
@@ -47,23 +51,21 @@
             
             <div class="container-botao-inicial">
                 <button id="btn-iniciar" class="botao-cyber-inicial" onclick="despertarIA()">
-                     [ ESTABELECER_CONEXAO_NEURAL ]
+                     ESTABELECER_CONEXÃO_NEURAL()
                 </button>
             </div>
+            
         </div>
 
-        <!-- ETAPA 2: PRÓLOGO CINEMATOGRÁFICO (MONÓLOGO + PROJEÇÃO DA PLANTA) -->
+        <!-- ETAPA 2: PRÓLOGO CINEMATOGRÁFICO -->
         <div id="tela-prologo" class="escondido painel-prologo-container">
             <div class="interface-header">> LOGS_DE_CONSCIÊNCIA // DESPERTAR_SISTÊMICO</div>
             
             <div class="grade-prologo-cinema">
-                <!-- Caixa de Diálogo do Robô -->
                 <div class="caixa-texto-prologo" id="texto-prologo"></div>
                 
-                <!-- Caixa Holográfica de Análise da Planta -->
                 <div class="painel-holograma-planta">
                     <div class="moldura-holograma">
-                        <!-- Insira a imagem "planta.png" na mesma pasta do projeto -->
                         <img src="planta.png" alt="Gênesis" class="imagem-planta-holo">
                         <div class="linha-laser-scan"></div>
                     </div>
@@ -82,10 +84,8 @@
             </div>
         </div>
 
-        <!-- ETAPA 3: TELA DO JOGO EM DUAS COLUNAS -->
+        <!-- ETAPA 3: TELA DO JOGO (GAMEPLAY) -->
         <div id="tela-jogo" class="escondido container-duplo">
-            
-            <!-- PAINEL ESQUERDO: TELEMETRIA DA ÁRVORE -->
             <div class="painel-esquerdo">
                 <div class="interface-header">> TELEMETRIA BIOMÉTRICA (GÊNESIS)</div>
                 
@@ -124,31 +124,26 @@
                 </div>
             </div>
 
-            <!-- PAINEL DIREITO: CONSOLE DE TEXTO E INPUT DE COMANDO -->
             <div class="painel-direito">
                 <div class="interface-header">> TERMINAL DE OPERAÇÕES ORBITAIS</div>
                 <div class="caixa-texto" id="log-jogo"></div>
-                
                 <div class="prompt-container">
                     <span class="prompt-simbolo">AI_KERNEL://</span>
-                    <input type="text" id="terminal-input" autofocus placeholder="Digite uma diretriz..." autocomplete="off">
+                    <input type="text" id="terminal-input" placeholder="Digite uma diretriz..." autocomplete="off">
                 </div>
             </div>
-
         </div>
 
     </div>
 
-    <!-- TELA HOLOGRÁFICA DE DOCUMENTO CONFIDENCIAL -->
+    <!-- OVERLAY HOLOGRÁFICO -->
     <div id="tela-documento" class="escondido overlay-documento">
         <div class="pasta-recipiente">
             <div class="interface-header" style="color: #ffaa00; margin-bottom: 5px;">
                 > CRITICAL DATA OVERRIDE // DECRYPTED_SUCCESSFULLY
             </div>
             <div class="linha-decorativa"></div>
-            
             <div id="conteudo-documento"></div>
-            
             <div class="linha-decorativa"></div>
             <button class="btn-fechar-doc" onclick="fecharDocumento()">
                 > FECHAR FLUXO DE DADOS (ABORT_VIEW)
@@ -156,7 +151,6 @@
         </div>
     </div>
 
-    <!-- Scripts carregados em ordem estrita de dependência -->
     <script src="diarios.js"></script>
     <script src="eventos.js"></script>
     <script src="finais.js"></script>
