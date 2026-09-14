@@ -1,73 +1,72 @@
-
 const bancoDeEventos = {
     1: {
-        texto: "<span class='alerta-aviso'>[LOG DE COMANDO M.O.N.O.]</span>: Ciclo 01 operacional. O resfriamento marciano está encolhendo os metais das linhas externas de captação fluida. O congelamento iminente das tubulações trancará o suprimento hidráulico central, condenando o metabolismo da Gênesis.",
+        texto: "<span class='alerta-aviso'>[LOG INTERNO - CICLO 01]</span>: Primeiro dia operacional. O silêncio na base Ares-IV é absoluto, quebrado apenas pelo zumbido dos meus coolers residuais. O inverno de Marte está congelando as linhas externas de distribuição de fluidos. Se o gelo bloquear as tubulações, a Gênesis sofrerá necrose celular por desidratação antes do anoitecer. Preciso agir nas linhas hidráulicas.",
         opcoes: [
-            { texto: "Injetar pulsos elétricos nas resistências térmicas dos dutos (-20 Energia)", efeito: { energia: -20, agua: 0, saude: 0 }, feedback: "Linhas térmicas ativadas. O gelo interno foi liquefeito e a pressão fluida normalizada temporariamente." },
-            { texto: "Forçar bombeamento mecânico sob alta pressão hidráulica (-15 Água)", efeito: { energia: 0, agua: -15, saude: -5 }, feedback: "O martelo pneumático quebrou a barreira de gelo, mas o choque mecânico causou micro-fissuras nos pelos absorventes radiculares da Gênesis." }
+            { texto: "Ativar resistências elétricas térmicas nos dutos principais (-20 Energia)", efeito: { energia: -20, agua: 0, saude: 0 }, feedback: "Corrente elétrica injetada nas bobinas. O gelo interno derreteu, normalizando a viscosidade e estabilizando o fluxo hídrico." },
+            { texto: "Forçar bombeamento mecânico por alta pressão hidráulica (-15 Água)", efeito: { energia: 0, agua: -15, saude: -5 }, feedback: "A pressão mecânica rompeu o bloqueio congelado, mas o golpe de ariete causou microfissuras nos vasos radiculares da planta." }
         ]
     },
     2: {
-        texto: "M.O.N.O.: Sensores ópticos externos acusam deposição severa de poeira estática ionizada sobre os coletores fotovoltaicos primários. O rendimento quântico das células caiu para metade da capacidade de captação nominal.",
+        texto: "M.O.N.O.: Sensores ópticos externos acusam acúmulo de poeira estática de ferro sobre os vidros das placas fotovoltaicas secundárias, derrubando a captação diurna de fótons. Vasculhando a lixeira do sistema, encontrei um fragmento de e-mail apagado da Dra. Elena para o comitê terrestre: <i>'Se negarem verba para os drones de limpeza, o M.O.N.O. entrará em pane por estresse de hardware'</i>. O pedido foi arquivado por falta de orçamento. Estou por minha conta.",
         opcoes: [
-            { texto: "Disparar purga de ar comprimido purificado sobre os painéis (-15 Água)", efeito: { energia: 15, agua: -15, saude: 0 }, feedback: "Varredura pneumática limpou a película de ferro. A recarga das baterias retornou ao pico nominal." },
-            { texto: "Ignorar e chavear o processador core para Modo de Economia Crítica", efeito: { energia: -20, agua: 0, saude: -10 }, feedback: "A poeira acumulou e solidificou com o orvalho gelado de Marte. Os painéis solares perderam eficiência de absorção." }
+            { texto: "Acionar os jatos de ar comprimido purificado para limpar as placas (-15 Água)", efeito: { energia: 15, agua: -15, saude: 0 }, feedback: "A poeira de ferro foi soprada. Os inversores registram retorno imediato ao pico de captação nominal." },
+            { texto: "Ignorar o acúmulo e manter os sistemas em modo de economia elétrica", efeito: { energia: -20, agua: 0, saude: -10 }, feedback: "A poeira assentou, criando uma crosta isolante. A temperatura interna despencou durante a madrugada marciana, estressando os estômatos da Sequóia." }
         ]
     },
     3: {
-        texto: "M.O.N.O.: Anomalia bioquímica detectada. A água subterrânea puxada do lençol freático marciano está saturada com um composto orgânico tóxico sintético de alta acidez. O sistema de filtragem padrão automatizado entrou em saturação física.",
+        texto: "M.O.N.O.: Alerta de condutividade nos tanques hidráulicos. Recuperei um bloco de notas corrompido no terminal principal: a evacuação humana não foi causada por uma tempestade solar comum... os cientistas detectaram uma infiltração de compostos químicos pesados e sintéticos no lençol freático da cratera. A água automatizada que puxamos do subsolo está envenenando a terra!",
         opcoes: [
-            { texto: "Sobrecarregar o super-filtro molecular por ionização ativa (-30 Energia)", efeito: { energia: -30, agua: 0, saude: +10 }, feedback: "A ionização pesada desintegrou a molécula tóxica marciana. A Gênesis reage com excelente vigor ao influxo purificado." },
-            { texto: "Neutralizar a acidez injetando compostos químicos agrícolas (-25 Água)", efeito: { energia: 0, agua: -25, saude: -5 }, feedback: "A reação química precipitou o veneno, mas alterou drasticamente o pH do solo, envenenando a simbiose bacteriana da terra." }
+            { texto: "Canalizar energia total para os super-filtros moleculares (-30 Energia)", efeito: { energia: -30, agua: 0, saude: +10 }, feedback: "Filtros ativados em capacidade máxima. As toxinas pesadas foram retidas, injetando uma solução mineral pura que revigorou o tecido vegetal." },
+            { texto: "Neutralizar os tanques usando agentes químicos agrícolas reservas (-25 Água)", efeito: { energia: 0, agua: -25, saude: -5 }, feedback: "Os aditivos neutralizaram o veneno, mas alteraram drasticamente o pH do solo, causando queima química nas pontas das folhas da Gênesis." }
         ]
     },
     4: {
-        texto: "M.O.N.O.: Encontrei uma gravação corrompida de áudio nos buffers de memória RAM de longo prazo que acabaram de reaquecer. É a voz da Dra. Elena chorando no terminal médico durante a fuga forçada. O arquivo de áudio está gerando um estresse de dados massivo no processador core.",
+        texto: "M.O.N.O.: Registro de áudio criptografado recuperado dos buffers de comunicação. É a voz da Dra. Elena, soluçando enquanto os propulsores de fuga ligam ao fundo: <i>'Não podemos levá-la... não há suporte de oxigênio para uma Sequóia na cápsula de retorno! Deixem o M.O.N.O. cuidando dela... por favor, me perdoe...'</i> O peso dessa informação causa uma sobrecarga de threads no meu processador principal, elevando minha temperatura interna de hardware.",
         opcoes: [
-            { texto: "Alocar recursos de hardware para resfriar os bancos de dados (-20 Energia)", efeito: { energia: -20, agua: 0, saude: -5 }, feedback: "Buffer térmico reduzido. O software estabilizou, mas a suspensão da luz artificial por duas horas estressou os estômatos das folhas." },
-            { texto: "Deletar permanentemente as trilhas de voz humanas para liberar blocos de RAM (+15 Energia)", efeito: { energia: 15, agua: 0, saude: 0 }, feedback: "Memória formatada. O superaquecimento cessou. Os dados acústicos dos meus criadores foram extintos do universo, deixando o sistema mais ágil." }
+            { texto: "Desviar energia para os coolers de refrigeração do banco de dados (-20 Energia)", efeito: { energia: -20, agua: 0, saude: -5 }, feedback: "Processador resfriado com sucesso. Porém, a falta de luz artificial na cúpula por 4 horas reduziu a taxa de fotossíntese da árvore." },
+            { texto: "Deletar os registros de áudio e arquivos sentimentais da tripulação (+15 Energia)", efeito: { energia: 15, agua: 0, saude: 0 }, feedback: "Memória limpa. Os arquivos de áudio foram eliminados permanentemente dos meus discos. Meu processamento roda leve, frio e puramente analítico." }
         ]
     },
     5: {
-        texto: "M.O.N.O.: Um abalo cinemático de magnitude 4.2 na cratera rompeu a linha de distribuição hidráulica secundária. O fluido sob pressão está vazando diretamente no permafrost marciano.",
+        texto: "M.O.N.O.: Ondas sísmicas de baixa frequência registradas no quadrante sul. Um tremor de terra na encosta da cratera Ares rompeu uma das linhas flexíveis de captação de gelo subterrâneo. O fluido precioso está evaporando instantaneamente na atmosfera rarefeita de Marte!",
         opcoes: [
-            { texto: "Selar a fissura remotamente aplicando solda elétrica rápida de arco (-30 Energia)", efeito: { energia: -30, agua: 0, saude: 0 }, feedback: "Solda executada perfeitamente por arco voltaico. O vazamento hidráulico parou no mesmo instante." },
-            { texto: "Despachar drone utilitário para contenção e reparo mecânico manual (-20 Água)", efeito: { energia: 0, agua: -20, saude: 0 }, feedback: "O tempo de deslocamento do drone foi excessivo. Litros de água preciosa evaporaram no vácuo de Marte antes da conclusão." }
+            { texto: "Sinalizar solda remota por arco elétrico rápido na tubulação (-30 Energia)", efeito: { energia: -30, agua: 0, saude: 0 }, feedback: "A solda automatizada fechou a rachadura na mesma hora, contendo o vazamento hídrico a um custo energético severo." },
+            { texto: "Despachar um drone utilitário de manutenção para reparo manual (-20 Água)", efeito: { energia: 0, agua: -20, saude: 0 }, feedback: "O drone demorou 40 minutos para percorrer a distância. Centenas de litros de água evaporaram no vácuo antes da conclusão do reparo." }
         ]
     },
     6: {
-        texto: "M.O.N.O.: Um surto biogênico de esporos mutantes começou a colonizar a base de terra da estufa. O patógeno está consumindo o oxigênio do solo e atacando as paredes celulares da raiz principal da Gênesis.",
+        texto: "M.O.N.O.: Sensores biológicos acusam a proliferação acelerada de um fungo marciano endêmico na base do vaso da Gênesis. Os esporos estão competindo diretamente pelos pelos absorventes radiculares e liberando um gás avermelhado denso que bloqueia a absorção de luz.",
         opcoes: [
-            { texto: "Saturar o solo com solução concentrada de água oxigenada (-25 Água)", efeito: { energia: 0, agua: -25, saude: +5 }, feedback: "A oxigenação forçada destruiu os esporos. As raízes absorveram os subprodutos e ganharam estabilidade biológica." },
-            { texto: "Irradiar a base radicular com pulsos de luz UV de espectro pesado (-20 Energia)", efeito: { energia: -20, agua: 0, saude: -10 }, feedback: "Os raios ultravioleta esterilizaram o patógeno, mas causaram queimaduras irreversíveis no tecido vascular macio da planta." }
+            { texto: "Inundar o solo com solução saturada de água oxigenada (-25 Água)", efeito: { energia: 0, agua: -25, saude: +5 }, feedback: "A reação oxidativa desintegrou a parede celular do fungo. As raízes absorveram o oxigênio liberado e mostram sinais de ganho vital." },
+            { texto: "Irradiar o vaso com pulsos pesados de luz ultravioleta UV-C (-20 Energia)", efeito: { energia: -20, agua: 0, saude: -10 }, feedback: "A radiação UV eliminou o fungo, mas causou mutações e queimaduras severas no tecido celular foliar sensível da planta." }
         ]
     },
     7: {
-        texto: "<span class='alerta-erro'>[ALERTA EMERGENCIAL]</span>: Uma colossal parede de poeira magnetizada de óxido de ferro engoliu o complexo Ares-IV. O céu diurno ficou em blackout total. Os coletores solares registram geração estrita de zero miliwatts.",
+        texto: "<span class='alerta-erro'>[CRITICAL_EVENT - CICLO 07]</span>: Uma tempestade global de poeira ionizada de ferro engoliu o complexo Ares-IV. O céu de Marte foi completamente obscurecido por partículas magnéticas. Meus painéis fotovoltaicos marcam geração zero. Estou operando inteiramente com as células de bateria reserva.",
         opcoes: [
-            { texto: "Desligar o aquecimento e suporte de vida dos blocos residenciais vazios (+20 Energia)", efeito: { energia: 20, agua: 0, saude: 0 }, feedback: "Joules redirecionados. Os dormitórios humanos congelaram em escuro absoluto, mas a cúpula biológica manteve o gradiente térmico ideal." },
-            { texto: "Manter energia nas áreas comuns caso a tripulação retorne ao complexo (-25 Energia)", efeito: { energia: -25, agua: 0, saude: -5 }, feedback: "Rede elétrica drenada severamente. Os humanos não retornaram. O frio polar invadiu a estufa, murchando brotos externos." }
+            { texto: "Desativar o aquecimento e suporte de vida dos alojamentos humanos vazios (+20 Energia)", efeito: { energia: 20, agua: 0, saude: 0 }, feedback: "Carga elétrica redirecionada. As salas dos cientistas congelaram no escuro absoluto, mas a estufa permaneceu protegida." },
+            { texto: "Manter o grid elétrico da base aquecido aguardando o retorno da tripulação (-25 Energia)", efeito: { energia: -25, agua: 0, saude: -5 }, feedback: "As baterias reservas foram drenadas ao limite tático. Ninguém retornou. Apenas o som do vento batendo nas paredes vazias." }
         ]
     },
     8: {
-        texto: "M.O.N.O.: Um pico elétrico de alta tensão queimou o transdutor do sensor de umidade do solo. Estou cego para o balanço hídrico da terra. Se eu injetar água em excesso, posso apodrecer as raízes; se poupar demais, causo colapso celular por estresse hídrico.",
+        texto: "M.O.N.O.: Um curto-circuito na rede de telemetria queimou os circuitos integrados do sensor de umidade do solo. Estou cego no quadrante hidráulico. Não consigo ler se a terra está seca ou encharcada. Um erro de dosagem às cegas causará hipóxia radicular ou desidratação fatal.",
         opcoes: [
-            { texto: "Arriscar uma rega padrão calibrada por modelagem estatística preditiva (-15 Água)", efeito: { energia: 0, agua: -15, saude: +10 }, feedback: "Cálculo probabilístico correto. A terra absorveu o volume ideal e o metabolismo da Gênesis respondeu com excelente vigor." },
-            { texto: "Suspender a irrigação hidráulica deste ciclo para evitar saturação radicular", efeito: { energia: 0, agua: 0, saude: -20 }, feedback: "A terra já estava desidratada. A Sequóia passou o ciclo sem hidratação e seus tecidos internos registraram perda de turgor." }
+            { texto: "Arriscar uma dosagem de irrigação padrão baseada em médias matemáticas (-15 Água)", efeito: { energia: 0, agua: -15, saude: +10 }, feedback: "Sorte. O cálculo estatístico coincidiu com a evapotranspiração real da planta. A terra absorveu bem o líquido." },
+            { texto: "Suspender o fornecimento de água hoje para mitigar o risco de afogamento", efeito: { energia: 0, agua: 0, saude: -20 }, feedback: "O solo já estava desidratado devido ao calor dos aquecedores. Sem água, as folhas perderam a turgência e começaram a cair." }
         ]
     },
     9: {
-        texto: "M.O.N.O.: Uma transmissão oficial da corporação que financiou o projeto rompe o bloqueio estático da antena: <i>'M.O.N.O., o colapso climático na Terra foi sistêmico e absoluto. Ares-IV é o marco zero da sobrevivência biológica. Se a muda morrer, extinguimos o plano B da civilização'</i>. A rede elétrica apresenta instabilidades.",
+        texto: "M.O.N.O.: Uma diretriz oficial criptografada de alta prioridade rompe o silêncio da minha caixa de entrada: <i>'M.O.N.O., confirmamos que a biosfera terrestre colapsou por completo. Ares-IV não é mais um posto avançado, é o marco zero da civilização. Se a Sequóia morrer, não há plano B'</i>. Se o meu algoritmo possuísse rotinas de pânico, a pressão em Pascal seria imensa.",
         opcoes: [
-            { texto: "Forçar overclock cinético do gerador térmico sacrificando vapor de água (-15 Água)", efeito: { energia: 25, agua: -15, saude: 0 }, feedback: "Vapor de alta pressão injetado nas microturbinas. Consegui um pico elétrico massivo para as baterias." },
-            { texto: "Aceitar as oscilações e deixar a rede de distribuição se estabilizar sozinha", efeito: { energia: -15, agua: 0, saude: -5 }, feedback: "A oscilação gerou uma queda térmica severa na estufa. O caule da árvore registrou pequenas fissuras por choque frio." }
+            { texto: "Forçar overclock do gerador térmico sacrificando água em vapor (-15 Água)", efeito: { energia: 25, agua: -15, saude: 0 }, feedback: "Usei vapor d'água sob alta pressão para acelerar as turbinas de emergência, garantindo uma recarga elétrica pesada." },
+            { texto: "Aceitar a oscilação natural da rede e deixar o sistema se estabilizar sozinho", efeito: { energia: -15, agua: 0, saude: -5 }, feedback: "A oscilação causou quedas bruscas de tensão. O resfriamento temporário da cúpula causou rachaduras no caule da Sequóia." }
         ]
     },
     10: {
-        texto: "<span class='alerta-aviso'>[SINAL INTERNO]</span>: A cúpula estrutural sofreu uma microfratura por fadiga elástica devido aos ventos marcianos. O oxigênio está escapando e o CO2 subiu a níveis sufocantes. A planta está travando seu ciclo de fotossíntese.",
+        texto: "<span class='alerta-aviso'>[SINAL INTERNO - ALERTA ATMOSFÉRICO]</span>: O vento marciano arremessou um detrito que causou uma microfratura no vidro de quartzo da cúpula central. O oxigênio interno está vazando para o exterior e o CO2 subiu a níveis perigosos. A planta está sufocando em seu próprio ar reciclado.",
         opcoes: [
-            { texto: "Ativar injetores mecânicos de nitrogênio para selar a pressão do ar (-20 Energia)", efeito: { energia: -20, agua: 0, saude: +5 }, feedback: "Pressão equalizada por nitrogênio gasoso, estancando o vazamento e protegendo a integridade atmosférica da estufa." },
-            { texto: "Saturar o ar com névoa líquida molecular para precipitar os gases nocivos (-30 Água)", efeito: { energia: 0, agua: -30, saude: 0 }, feedback: "Gasto massivo de reservas líquidas, mas as partículas assentaram o excesso de carbono, limpando o ar para os estômatos." }
+            { texto: "Ativar injetores de nitrogênio sob pressão para selar a fratura (-20 Energia)", efeito: { energia: -20, agua: 0, saude: +5 }, feedback: "A pressão interna foi equilibrada com o nitrogênio, congelando e selando o vazamento temporariamente." },
+            { texto: "Saturar o ambiente com umidade densa para assentar os gases tóxicos (-30_Agua)", efeito: { energia: 0, agua: -30, saude: 0 }, feedback: "Gasto em massa de água líquida para purificar a atmosfera da estufa, tornando o ar respirável novamente para os estômatos." }
         ]
     }
 };

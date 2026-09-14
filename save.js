@@ -42,7 +42,7 @@ function carregarProgresso() {
         começarDia();
         return true;
     } catch (e) {
-        console.error("Erro ao descriptografar save corrompido.", e);
+        console.error("Erro ao descriptografar save.", e);
         return false;
     }
 }
