@@ -17,30 +17,21 @@
         
         <!-- Detalhes de Charme das Bordas do Painel -->
         <div class="corner-tag top-left">ARES-IV // NUCLEUS</div>
-        <div class="corner-tag top-right">SYS_STATUS: ACTIVE</div>
+        <div class="corner-tag top-right" id="sys-status-tag">SYS_STATUS: SLEEP</div>
         <div class="corner-tag bottom-left">SECURE_LINE_0x99</div>
         <div class="corner-tag bottom-right">MODEL: M.O.N.O._v1.04</div>
 
-        <!-- TELA INICIAL CENTRALIZADA -->
+        <!-- ETAPA 1: TELA INICIAL (MENU PRINCIPAL) -->
         <div id="tela-inicial" class="painel-inicial-container">
-            
             <div class="menu-sistema-topo">
-                <span class="ponto-piscante-on">● INTERFACE_ONLINE</span>
+                <span class="ponto-piscante-off">● STANDBY_MODE</span>
                 <span>SECURE_DATA_PROTOCOL // ARES_IV</span>
                 <span>SYSTEM_BOOT_SEQUENCE_v1.0.4</span>
             </div>
 
             <div class="bloco-titulo-inicial">
                 <h1 class="titulo-inicial">M.O.N.O.</h1>
-                <p class="subtitulo">[ CORE_KERNEL: ACTIVE // DIRECTIVE: GENESIS_PROTECTION ]</p>
-            </div>
-
-            <div class="caixa-texto-intro">
-                <div class="linha-log"><span class="prefixo-sys">[0.002] [BOOT]:</span> Alinhando matriz quântica com rede orbital... <span class="log-ok">[OK]</span></div>
-                <div class="linha-log"><span class="prefixo-sys">[0.145] [ENV]:</span> Medindo atmosfera da cratera Ares-IV... <span class="log-ok">[ESTÁVEL]</span></div>
-                <div class="linha-log"><span class="prefixo-sys">[0.590] [BIO]:</span> Varredura de assinaturas térmicas humanas... <span class="log-erro">[Z_CONTACTS]</span></div>
-                <div class="linha-log"><span class="prefixo-sys">[0.881] [WARN]:</span> Nível hidrodinâmico da Gênesis operando em capacidade crítica.</div>
-                <div class="linha-log-final"><span class="prefixo-sys">[1.000] [READY]:</span> Conexão neural disponível. Aguardando pulso elétrico do operador...</div>
+                <p class="subtitulo">[ CORE_KERNEL: INACTIVE // DIRECTIVE: RECOVERY_WAIT ]</p>
             </div>
 
             <div class="barra-carregamento-estetica">
@@ -48,28 +39,35 @@
             </div>
             
             <div class="container-botao-inicial">
-                <button id="btn-iniciar" class="botao-cyber-inicial" onclick="inicializarSistema()">
-                     estabelecer_conexao_neural()
+                <button id="btn-iniciar" class="botao-cyber-inicial" onclick="despertarIA()">
+                     [ EXECUTAR_PROTOCOLO_BIOSFERA ]
                 </button>
             </div>
-            
         </div>
 
-        <!-- TELA DO JOGO EM DUAS COLUNAS -->
+        <!-- ETAPA 2: PRÓLOGO CINEMATOGRÁFICO (FALAS DO ROBÔ) -->
+        <div id="tela-prologo" class="escondido painel-prologo-container">
+            <div class="interface-header">> LOGS_DE_CONSCIÊNCIA // DESPERTAR_SISTÊMICO</div>
+            <div class="caixa-texto-prologo" id="texto-prologo"></div>
+            <div class="container-botao-prologo">
+                <button id="btn-prologo" class="botao-prologo-avancar" onclick="avançarPrologo()">
+                    AVANÇAR_VARREDURA_DE_DADOS >>
+                </button>
+            </div>
+        </div>
+
+        <!-- ETAPA 3: TELA DO JOGO EM DUAS COLUNAS -->
         <div id="tela-jogo" class="escondido container-duplo">
             
             <!-- PAINEL ESQUERDO: TELEMETRIA DA ÁRVORE -->
             <div class="painel-esquerdo">
                 <div class="interface-header">> TELEMETRIA BIOMÉTRICA</div>
                 
+                <!-- Container do Gráfico Quântico de Telemetria Dinâmico -->
                 <div class="wrapper-arvore">
-                    <pre class="ascii-arvore">
-      #####
-    #######
-  ###########
-     |||
-     |||
-   ======  
+                    <div class="grafico-header">[ HISTÓRICO_INTEGRIDADE_GÊNESIS ]</div>
+                    <pre id="grafico-telemetria" class="grafico-linhas">
+-- Inicializando Matriz de Dados --
                     </pre>
                     <div class="radar-scan"></div>
                 </div>
@@ -109,7 +107,7 @@
                 
                 <div class="prompt-container">
                     <span class="prompt-simbolo">AI_KERNEL://</span>
-                    <input type="text" id="terminal-input" autofocus placeholder="Digite uma diretriz..." autocomplete="off">
+                    <input type="text" id="terminal-input" placeholder="Digite uma diretriz..." autocomplete="off">
                 </div>
             </div>
 

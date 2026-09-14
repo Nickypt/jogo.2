@@ -83,6 +83,32 @@ body {
 .progresso-linha-cyber { position: absolute; width: 35%; height: 100%; }
 .container-botao-inicial { display: flex; justify-content: center; margin-top: 10px; }
 
+/* --- SEÇÃO DO PRÓLOGO NARRATIVO --- */
+.painel-prologo-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    box-sizing: border-box;
+}
+.caixa-texto-prologo {
+    background-color: rgba(1, 4, 3, 0.4);
+    border: 1px dashed rgba(0, 255, 204, 0.2);
+    padding: 25px;
+    height: 380px;
+    overflow-y: auto;
+    font-size: 1.05rem;
+    line-height: 1.8;
+    border-radius: 8px;
+    box-shadow: inset 0 0 30px rgba(0,0,0,0.8);
+    box-sizing: border-box;
+}
+.container-botao-prologo {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 15px;
+}
+
 /* --- SEÇÃO DO JOGO (DUAS COLUNAS) --- */
 .container-duplo {
     display: grid;
