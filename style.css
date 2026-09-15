@@ -1,103 +1,271 @@
-/* --- MICRO-INTERAÇÕES DE PERSONALIDADE E ANIMAÇÕES FUTURISTAS --- */
+/* ==========================================================================
+   M.O.N.O. - PROTOCOLO BIOSFERA // IDENTIDADE VISUAL & ESTILOS DE GLITCH
+   ========================================================================== */
 
-/* Pulso Quântico Global do Gabinete (Respiração de Hardware) */
+/* --- CONFIGURAÇÕES BASE & PALETA QUÂNTICA FRIA --- */
+body {
+    background-color: #010402;
+    color: #e6f0fa;
+    font-family: 'Courier New', monospace;
+}
+
+/* O Painel Principal (Efeito Vidro Translúcido / Glassmorphism) */
 .terminal {
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    background: linear-gradient(135deg, rgba(10, 20, 28, 0.85) 0%, rgba(5, 10, 15, 0.95) 100%);
+    backdrop-filter: blur(20px) saturate(140%);
+    -webkit-backdrop-filter: blur(20px) saturate(140%);
     animation: hardwarePulse 6s ease-in-out infinite alternate;
-    transition: border-color 0.6s ease, box-shadow 0.6s ease;
+    transition: border-color 0.6s ease, box-shadow 0.6s ease, filter 0.3s ease;
 }
 
-@keyframes hardwarePulse {
-    0% {
-        box-shadow: 0 24px 80px rgba(0, 0, 0, 0.8), inset 0 1px 1px rgba(255, 255, 255, 0.08);
-        border-color: rgba(255, 255, 255, 0.12);
-    }
-    100% {
-        box-shadow: 0 24px 90px rgba(0, 213, 255, 0.03), 0 24px 80px rgba(0, 0, 0, 0.85), inset 0 1px 1px rgba(255, 255, 255, 0.15);
-        border-color: rgba(0, 213, 255, 0.25);
-    }
+.corner-tag { 
+    color: rgba(230, 240, 250, 0.3); 
+    font-weight: 600;
 }
 
-/* Linhas de Varredura de monitor holográfico */
-@keyframes scanlineMovement { 0% { background-position: 0 0; } 100% { background-position: 0 100%; } }
-
-/* Animação do Scanner de Laser Biométrico */
-.radar-scan, .linha-laser-scan { 
-    animation: radarScanAnim 4s cubic-bezier(0.4, 0, 0.2, 1) infinite; 
+/* --- TELA INICIAL (MENU PRINCIPAL) --- */
+.menu-sistema-topo { 
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08); 
+    color: rgba(230, 240, 250, 0.4);
 }
-@keyframes radarScanAnim { 0% { top: -50%; } 100% { top: 100%; } }
+.ponto-piscante-off { color: #ff3366; }
+.ponto-piscante-on { color: #00ffaa; }
 
-/* Pulso Estético do Botão e Scanner da Linha de Carregamento */
+.decoracao-linhar-cyber {
+    background-color: rgba(0, 255, 204, 0.3);
+}
+
+.titulo-inicial {
+    color: #ffffff;
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+}
+.subtitulo { 
+    color: rgba(230, 240, 250, 0.4); 
+    letter-spacing: 4px; 
+    font-size: 0.75rem;
+}
+
+.caixa-texto-intro {
+    border: 1px solid rgba(255, 255, 255, 0.06); 
+    background-color: rgba(0, 0, 0, 0.3);
+}
+.prefixo-sys { color: rgba(230, 240, 250, 0.3); }
+.linha-log { color: rgba(230, 240, 250, 0.7); }
+.linha-log-final { color: #ffffff; }
+.log-ok { color: #00ffaa; }
+.log-erro { color: #ff4d66; }
+
+.barra-carregamento-estetica { background: rgba(255, 255, 255, 0.05); }
+
+/* Botão Conexão Neural */
 .botao-cyber-inicial {
+    background: transparent; 
+    border: 1px solid rgba(255, 255, 255, 0.3); 
+    color: #ffffff; 
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    letter-spacing: 2px;
+    font-family: 'Courier New', monospace;
+    font-weight: bold;
     transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     animation: pulsoBotaoInicial 2s infinite alternate;
 }
 .botao-cyber-inicial:hover {
-    letter-spacing: 4px;
-    padding-left: 47px;
+    background: #ffffff; 
+    color: #050a0f;
+    border-color: #ffffff;
+    box-shadow: 0 0 30px rgba(255, 255, 255, 0.4); 
+    letter-spacing: 3px;
+}
+
+/* --- TELEMETRIA E GAMEPLAY (COCKPIT) --- */
+.interface-header { 
+    border-left: 2px solid rgba(0, 255, 204, 0.6); 
+    color: rgba(230, 240, 250, 0.6); 
+    letter-spacing: 2px;
+    font-weight: bold;
+    padding-left: 10px;
+}
+.painel-esquerdo { border-right: 1px solid rgba(255, 255, 255, 0.06); }
+
+.wrapper-arvore { 
+    background-color: rgba(0, 255, 204, 0.01); 
+    border: 1px solid rgba(255, 255, 255, 0.06); 
+}
+.imagem-planta-holo, .planta-gameplay-img {
+    filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.5));
+}
+
+.label-wrapper label { color: rgba(230, 240, 250, 0.5); letter-spacing: 1.5px; }
+.barra { 
+    color: #ffffff;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.3); 
+}
+.telemetria-rodape { 
+    color: rgba(230, 240, 250, 0.3); 
+    border-top: 1px dashed rgba(255, 255, 255, 0.1); 
+}
+
+/* Console de Texto e Input */
+.caixa-texto { 
+    background-color: rgba(0, 0, 0, 0.2); 
+    border: 1px solid rgba(255, 255, 255, 0.06); 
+}
+.prompt-container { 
+    background-color: rgba(0, 0, 0, 0.4); 
+    border: 1px solid rgba(255, 255, 255, 0.08); 
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); 
+    transition: all 0.3s ease;
+    position: relative;
+}
+.prompt-container:focus-within {
+    border-color: rgba(0, 255, 204, 0.5);
+    background-color: rgba(0, 0, 0, 0.6);
+    box-shadow: 0 0 20px rgba(0, 255, 204, 0.1);
+}
+.prompt-simbolo { color: rgba(230, 240, 250, 0.6); font-weight: bold; }
+#terminal-input { color: #ffffff; background: transparent; border: none; outline: none; width: 100%; font-family: 'Courier New', monospace; }
+#terminal-input::placeholder { color: rgba(230, 240, 250, 0.15); }
+
+/* --- NOVOS BOTÕES INTERATIVOS (EVITANDO TÉDIO DE DIGITAÇÃO) --- */
+.container-opcoes-clicaveis {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: 15px 0;
+}
+
+.btn-opcao-interativa, .btn-opcao-upgrade, .btn-log-arquivo {
+    background: rgba(0, 255, 204, 0.04) !important;
+    border: 1px solid rgba(0, 255, 204, 0.2) !important;
+    color: #cbdcf0 !important;
+    padding: 10px 14px !important;
+    text-align: left !important;
+    font-size: 0.88rem !important;
+    font-family: 'Courier New', monospace;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: all 0.2s ease-in-out;
+}
+
+.btn-opcao-interativa:hover, .btn-opcao-upgrade:hover, .btn-log-arquivo:hover {
+    background: rgba(0, 255, 204, 0.15) !important;
+    border-color: #00ffcc !important;
+    color: #ffffff !important;
+    transform: translateX(4px);
+    box-shadow: 0 0 15px rgba(0, 255, 204, 0.1);
+}
+
+.dica-terminal {
+    font-size: 0.72rem;
+    color: rgba(230, 240, 250, 0.35);
+    margin-top: 4px;
+}
+
+/* --- TELA SECRETA: HISTÓRICO DE LOGS RECUPERADOS --- */
+.container-historico-logs {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    height: 100%;
+}
+.bloco-grade-logs {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+    max-height: 250px;
+    overflow-y: auto;
+    padding-right: 5px;
+}
+.btn-log-arquivo.desbloqueado {
+    border-color: rgba(255, 170, 0, 0.3) !important;
+    color: #ffcc00 !important;
+}
+.btn-log-arquivo.bloqueado {
+    border-color: rgba(255, 255, 255, 0.05) !important;
+    color: rgba(230, 240, 250, 0.2) !important;
+    cursor: not-allowed;
+    background: rgba(255, 255, 255, 0.01) !important;
+}
+.btn-log-arquivo.bloqueado:hover {
+    transform: none !important;
+    box-shadow: none !important;
+}
+
+/* --- ALERTAS E ESTADOS DE TENDÊNCIA --- */
+.alerta-erro { color: #ff4d66; font-weight: bold; }
+.alerta-aviso { color: #ffaa00; }
+.alerta-sucesso { color: #00ffaa; }
+.tend-sobe { color: #00ffaa; }
+.tend-desce { color: #ff4d66; }
+
+/* OVERLAY DE LOGS CONFIDENCIAIS (Laranja Restrito) */
+.overlay-documento { background-color: rgba(4, 6, 10, 0.98); }
+.pasta-recipiente { 
+    background-color: #0f0a05; 
+    backdrop-filter: blur(20px); 
+    border: 1px solid rgba(255, 170, 0, 0.3); 
+    box-shadow: 0 30px 70px rgba(0, 0, 0, 0.7); 
+    color: #ffebcc; 
+}
+.linha-decorativa { border-top: 1px dashed rgba(255, 170, 0, 0.15); }
+.btn-fechar-doc { 
+    border-color: rgba(255, 170, 0, 0.4) !important; 
+    color: #ffaa00 !important; 
+    background: transparent !important; 
+    cursor: pointer;
+    font-family: 'Courier New', monospace;
+    padding: 10px;
+    font-weight: bold;
+}
+.btn-fechar-doc:hover { 
+    background: #ffaa00 !important; 
+    color: #0f0a05 !important; 
+    box-shadow: 0 0 30px rgba(255, 170, 0, 0.3) !important; 
+}
+
+/* --- DESIGN DINÂMICO DOS FINAIS --- */
+.final-esmeralda { background: linear-gradient(135deg, #05140f 0%, #020805 100%) !important; border-color: #00ffaa !important; }
+.final-ambar { background: linear-gradient(135deg, #140f05 0%, #080502 100%) !important; border-color: #ffaa00 !important; }
+.final-sacrificio { background: linear-gradient(135deg, #14050a 0%, #080204 100%) !important; border-color: #ff4d66 !important; }
+.final-morte { background: #030305 !important; border-color: #222226 !important; filter: grayscale(100%); }
+
+/* --- MICRO-INTERAÇÕES & ANIMAÇÕES CYBERPUNK --- */
+@keyframes hardwarePulse {
+    0% { box-shadow: 0 24px 80px rgba(0, 0, 0, 0.8), inset 0 1px 1px rgba(255, 255, 255, 0.08); border-color: rgba(255, 255, 255, 0.12); }
+    100% { box-shadow: 0 24px 90px rgba(0, 213, 255, 0.03), 0 24px 80px rgba(0, 0, 0, 0.85), inset 0 1px 1px rgba(255, 255, 255, 0.15); border-color: rgba(0, 213, 255, 0.25); }
 }
 @keyframes pulsoBotaoInicial {
     0% { border-color: rgba(255, 255, 255, 0.2); box-shadow: 0 0 10px rgba(255, 255, 255, 0.02); }
     100% { border-color: rgba(255, 255, 255, 0.8); box-shadow: 0 0 25px rgba(255, 255, 255, 0.15); }
 }
+.radar-scan, .linha-laser-scan { animation: radarScanAnim 4s cubic-bezier(0.4, 0, 0.2, 1) infinite; position: absolute; left: 0; width: 100%; height: 2px; }
+@keyframes radarScanAnim { 0% { top: -50%; } 100% { top: 100%; } }
 
-.progresso-linha-cyber { animation: scanDeLuz 3s ease-in-out infinite; }
+.progresso-linha-cyber { animation: scanDeLuz 3s ease-in-out infinite; background-color: #00ffcc; }
 @keyframes scanDeLuz { 0% { left: -45%; } 100% { left: 115%; } }
 
-/* Charme Interativo do Teclado (Prompt Ativo) */
-.prompt-container { 
-    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-    position: relative;
-}
-.prompt-container:focus-within {
-    border-color: rgba(255, 255, 255, 0.5);
-    background-color: rgba(0, 0, 0, 0.6);
-    box-shadow: 0 0 20px rgba(0, 213, 255, 0.08);
-    transform: translateY(-1px);
-}
-.prompt-container::after {
-    content: ""; position: absolute; bottom: -1px; left: 50%;
-    width: 0; height: 1px; background: linear-gradient(90deg, transparent, #ffffff, transparent);
-    transition: all 0.4s ease;
-}
-.prompt-container:focus-within::after { left: 10%; width: 80%; }
-
-/* Efeito Flicker de Inicialização de Displays Militares */
-.caixa-texto, .caixa-texto-intro, .caixa-texto-prologo {
-    animation: textAmbientFlicker 12s infinite linear;
-}
+.caixa-texto, .caixa-texto-intro, .caixa-texto-prologo { animation: textAmbientFlicker 12s infinite linear; }
 @keyframes textAmbientFlicker {
     0%, 49.9%, 50.2%, 71.9%, 72.1%, 100% { opacity: 1; filter: brightness(1); }
     50% { opacity: 0.95; filter: brightness(0.9); }
     50.1% { opacity: 0.98; filter: brightness(1.1); }
     72% { opacity: 0.92; filter: brightness(0.85); }
 }
-
-/* Linha Decorativa Dinâmica no Histórico de Telemetria */
-.grafico-header { position: relative; padding-bottom: 4px; }
-.grafico-header::after {
-    content: ""; position: absolute; bottom: 0; left: 25%;
-    width: 50%; height: 1px; background: linear-gradient(90deg, transparent, rgba(0, 213, 255, 0.2), transparent);
-    animation: telemetryWave 4s ease-in-out infinite alternate;
-}
-@keyframes telemetryWave { 0% { transform: scaleX(0.8); opacity: 0.5; } 100% { transform: scaleX(1.2); opacity: 1; } }
-
-/* Animações de Inicialização e Glitch */
-@keyframes bootScreen {
-    0% { transform: scaleY(0.002) scaleX(0.9); opacity: 0; filter: blur(4px); }
-    40% { transform: scaleY(0.002) scaleX(1); opacity: 0.8; filter: blur(0); }
-    100% { transform: scaleY(1) scaleX(1); opacity: 1; }
-}
-@keyframes glitcheffect {
-    0%, 98%, 100% { transform: skew(0); opacity: 1; }
-    99% { transform: skew(-1deg); opacity: 0.95; }
-}
-
 .piscar { animation: piscarAnim 2s infinite; }
 @keyframes piscarAnim { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
-.escondido { display: none !important; }
 
-/* Suavização de Seleção de Texto Estética */
-::selection {
-    background: rgba(0, 213, 255, 0.15);
-    color: #ffffff;
+/* --- SYSTEMA AGRESSIVO DE GLITCH (CRÍTICO DE SANIDADE) --- */
+.glitch-agressivo {
+    animation: glitchDeformacao 0.15s infinite linear alternate !important;
+    filter: hue-rotate(280deg) contrast(1.8) saturate(2) !important;
 }
+
+@keyframes glitchDeformacao {
+    0% { transform: skewX(0deg) scaleY(1); box-shadow: 0 0 30px rgba(255, 0, 85, 0.2); border-color: #ff3366; }
+    50% { transform: skewX(-2deg) scaleX(0.99); filter: blur(0.5px); }
+    100% { transform: skewX(3deg) scaleY(1.01); box-shadow: -5px 0 40px rgba(0, 255, 204, 0.3); border-color: #00ffcc; }
+}
+
+::selection { background: rgba(0, 213, 255, 0.15); color: #ffffff; }
+.escondido { display: none !important; }
