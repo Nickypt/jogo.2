@@ -1,0 +1,128 @@
+/* ==========================================================================
+   M.O.N.O. - ESTILOS CUSTOMIZADOS E IDENTIDADES DOS MINIJOGOS
+   ========================================================================== */
+
+/* CAIXA BASE DE EVENTOS MECÂNICOS */
+.bloco-minijogo-painel {
+    border-radius: 8px;
+    padding: 20px;
+    margin: 15px 0;
+    box-sizing: border-box;
+    font-family: 'Courier New', monospace;
+    position: relative;
+    overflow: hidden;
+}
+
+/* 🔶 MINIJOGO 1: HACK VISUAL (ALINHAMENTO DE FREQUÊNCIA DE ENERGIA) */
+.bloco-hack-visual {
+    background: rgba(20, 12, 2, 0.9);
+    border: 1px solid #ffaa00;
+    box-shadow: inset 0 0 15px rgba(255, 170, 0, 0.15), 0 5px 25px rgba(0, 0, 0, 0.5);
+}
+.header-hack-visual {
+    color: #ffaa00;
+    font-size: 1.1rem;
+    font-weight: bold;
+    border-bottom: 1px dashed rgba(255, 170, 0, 0.3);
+    padding-bottom: 6px;
+    margin-bottom: 10px;
+}
+.display-onda-sinal {
+    font-size: 1.3rem;
+    letter-spacing: 5px;
+    background: #000;
+    padding: 12px;
+    border-radius: 6px;
+    text-align: center;
+    color: #ffcc00;
+    border: 1px solid rgba(255, 170, 0, 0.3);
+    margin: 15px 0;
+    text-shadow: 0 0 10px #ffcc00;
+}
+
+/* 🔴 MINIJOGO 2: INJEÇÃO QUÍMICA (SÍNTESE DE ASSINATURA MOLECULAR) */
+.bloco-injecao-quimica {
+    background: rgba(20, 5, 8, 0.9);
+    border: 1px solid #ff3366;
+    box-shadow: inset 0 0 15px rgba(255, 51, 102, 0.15), 0 5px 25px rgba(0, 0, 0, 0.5);
+}
+.header-injecao-quimica {
+    color: #ff3366;
+    font-size: 1.1rem;
+    font-weight: bold;
+    border-bottom: 1px dashed rgba(255, 51, 102, 0.3);
+    padding-bottom: 6px;
+    margin-bottom: 10px;
+}
+.codigo-antidoto-display {
+    background: #0a0304;
+    color: #00ffcc;
+    font-size: 1.3rem;
+    padding: 14px;
+    text-align: center;
+    border: 1px dashed #ff3366;
+    border-radius: 6px;
+    letter-spacing: 3px;
+    margin: 15px 0;
+    text-shadow: 0 0 10px rgba(0, 255, 204, 0.5);
+}
+
+/* 🟢 MINIJOGO 3: CALIBRAÇÃO HIDRÁULICA (EQUALIZAÇÃO DE PRESSÃO) */
+.bloco-remendo-hidraulico {
+    background: rgba(2, 18, 15, 0.9);
+    border: 1px solid #00ffcc;
+    box-shadow: inset 0 0 15px rgba(0, 255, 204, 0.15), 0 5px 25px rgba(0, 0, 0, 0.5);
+}
+.header-remendo-hidraulico {
+    color: #00ffcc;
+    font-size: 1.1rem;
+    font-weight: bold;
+    border-bottom: 1px dashed rgba(0, 255, 204, 0.3);
+    padding-bottom: 6px;
+    margin-bottom: 10px;
+}
+.painel-psi-dados {
+    background: rgba(0,0,0,0.4);
+    padding: 10px 15px;
+    border-left: 3px solid #00ffcc;
+    margin: 15px 0;
+    color: #cbdcf0;
+}
+
+/* 🔵 MINIJOGO 4: SOBRECARGA QUÂNTICA (DIGITAÇÃO VELOZ CONTRA O TEMPO) */
+.bloco-sobrecarga-quantica {
+    background: rgba(5, 12, 25, 0.95);
+    border: 1px solid #00b3ff;
+    box-shadow: inset 0 0 20px rgba(0, 179, 255, 0.2), 0 8px 30px rgba(0, 0, 0, 0.6);
+}
+.header-sobrecarga-quantica {
+    color: #00b3ff;
+    font-size: 1.1rem;
+    font-weight: bold;
+    border-bottom: 1px dashed rgba(0, 179, 255, 0.3);
+    padding-bottom: 6px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.cronometro-regressivo {
+    background: #ff3366;
+    color: #ffffff;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    box-shadow: 0 0 10px #ff3366;
+    animation: piscar 1s infinite alternate;
+}
+.frase-desafio-display {
+    background: #030814;
+    color: #ffffff;
+    font-size: 1.05rem;
+    padding: 15px;
+    border: 1px solid rgba(0, 179, 255, 0.4);
+    border-radius: 6px;
+    line-height: 1.5;
+    margin: 15px 0;
+    font-style: italic;
+}

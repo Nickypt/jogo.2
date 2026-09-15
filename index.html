@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>M.O.N.O. - Protocolo Biosfera</title>
     <link rel="stylesheet" href="layout.css">
-    <link rel="stylesheet" href="interface.css">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -14,11 +13,11 @@
 
     <div class="terminal">
         <div class="corner-tag top-left">ARES-IV // NUCLEUS</div>
-        <div class="corner-tag top-right" id="sys-status-tag">SYS_STATUS: SLEEP</div>
+        <div class="corner-tag top-right" id="sys-status-tag">SYS_STATUS: STANDBY</div>
         <div class="corner-tag bottom-left">SECURE_LINE_0x99</div>
-        <div class="corner-tag bottom-right">MODEL: M.O.N.O._v1.04</div>
+        <div class="corner-tag bottom-right">MODEL: M.O.N.O._v1.06</div>
 
-        <!-- ETAPA 1: TELA INICIAL -->
+        <!-- TELA INICIAL -->
         <div id="tela-inicial" class="painel-inicial-container">
             <div class="menu-sistema-topo">
                 <div class="status-bota-wrapper">
@@ -26,7 +25,7 @@
                     <span class="status-texto-core">CORE_KERNEL: STANDBY</span>
                 </div>
                 <span>SECURE_DATA_PROTOCOL // ARES_IV</span>
-                <span>SYSTEM_BOOT_SEQUENCE_v1.0.4</span>
+                <span>SYSTEM_BOOT_SEQUENCE_v1.0.6</span>
             </div>
 
             <div class="bloco-titulo-inicial">
@@ -41,12 +40,10 @@
                 <div class="linha-log"><span class="prefixo-sys">[0.145] [ENV]:</span> Mapeando integridade da cúpula de quartzo... <span class="log-ok">[ESTÁVEL]</span></div>
                 <div class="linha-log"><span class="prefixo-sys">[0.590] [BIO]:</span> Escaneando assinaturas térmicas humanas... <span class="log-erro">[FALHA - ZERO CONTATOS]</span></div>
                 <div class="linha-log"><span class="prefixo-sys">[0.881] [WARN]:</span> Alerta: Biosfera Central operando com largura de banda crítica.</div>
-                <div class="linha-log-final"><span class="prefixo-sys">[1.000] [READY]:</span> Conexão disponível. Clique abaixo ou digite <b style="color:#ffcc00">/retomar</b>.</div>
+                <div class="linha-log-final"><span class="prefixo-sys">[1.000] [READY]:</span> Conexão disponível. Clique no botão ou digite <b style="color:#ffcc00">/retomar</b> para restaurar backup.</div>
             </div>
 
-            <div class="barra-carregamento-estetica">
-                <div class="progresso-linha-cyber"></div>
-            </div>
+            <div class="barra-carregamento-estetica"><div class="progresso-linha-cyber"></div></div>
             
             <div class="container-botao-inicial">
                 <button id="btn-iniciar" class="botao-cyber-inicial" onclick="despertarIA()">
@@ -55,14 +52,14 @@
             </div>
         </div>
 
-        <!-- ETAPA 2: PRÓLOGO CINEMATOGRÁFICO -->
+        <!-- PRÓLOGO CINEMATOGRÁFICO -->
         <div id="tela-prologo" class="escondido painel-prologo-container">
             <div class="interface-header">> LOGS_DE_CONSCIÊNCIA // DESPERTAR_SISTÊMICO</div>
             <div class="grade-prologo-cinema">
                 <div class="caixa-texto-prologo" id="texto-prologo"></div>
                 <div class="painel-holograma-planta">
                     <div class="moldura-holograma">
-                        <img src="planta.png" alt="Gênesis" class="imagem-planta-holo">
+                        <div class="imagem-substituta-holo">☘️</div>
                         <div class="linha-laser-scan"></div>
                     </div>
                     <div class="dados-telemetria-rapida">
@@ -79,31 +76,28 @@
             </div>
         </div>
 
-        <!-- ETAPA 3: TELA DO JOGO -->
+        <!-- TELA DO JOGO (DUAS COLUNAS) -->
         <div id="tela-jogo" class="escondido container-duplo">
+            <!-- PAINEL ESQUERDO: TELEMETRIA -->
             <div class="painel-esquerdo">
                 <div class="interface-header">> TELEMETRIA BIOMÉTRICA (GÊNESIS)</div>
                 <div class="wrapper-arvore">
                     <div class="container-planta-gameplay">
-                        <img src="planta.png" alt="Gênesis Vital" class="planta-gameplay-img">
+                        <div class="imagem-substituta-gameplay">☘️</div>
                         <div class="radar-scan"></div>
                     </div>
                 </div>
                 <div class="status-grupo">
-                    <div class="label-wrapper"><label>INTEGRIDADE VITAL</label><span id="tend-saude" class="piscar"></span></div>
+                    <div class="label-wrapper"><label>INTEGRIDADE VITAL</label><span id="tend-saude"></span></div>
                     <div id="bar-saude" class="barra">░░░░░░░░░░</div>
                 </div>
                 <div class="status-grupo">
-                    <div class="label-wrapper"><label>RESERVATÓRIO H2O</label><span id="tend-agua" class="piscar"></span></div>
+                    <div class="label-wrapper"><label>RESERVATÓRIO H2O</label><span id="tend-agua"></span></div>
                     <div id="bar-agua" class="barra">░░░░░░░░░░</div>
                 </div>
                 <div class="status-grupo">
-                    <div class="label-wrapper"><label>NÚCLEO DE ENERGIA</label><span id="tend-energia" class="piscar"></span></div>
+                    <div class="label-wrapper"><label>NÚCLEO DE ENERGIA</label><span id="tend-energia"></span></div>
                     <div id="bar-energia" class="barra">░░░░░░░░░░</div>
-                </div>
-                <div class="status-grupo" id="sanidade-ui-wrapper" style="margin-top:10px;">
-                    <div class="label-wrapper"><label style="color:#ff00ea;">ESTABILIDADE LOGICA IA</label></div>
-                    <div id="bar-sanidade" class="barra" style="color:#ff00ea; font-size:0.9rem;">██████████ (100%)</div>
                 </div>
                 <div class="telemetria-rodape">
                     <span>COORDS: 14.7°N, 120.4°E</span>
@@ -111,12 +105,13 @@
                 </div>
             </div>
 
+            <!-- PAINEL DIREITO: CONSOLE TEXTUAL -->
             <div class="painel-direito">
                 <div class="interface-header">> TERMINAL DE OPERAÇÕES ORBITAIS</div>
                 <div class="caixa-texto" id="log-jogo"></div>
                 <div class="prompt-container">
                     <span class="prompt-simbolo">AI_KERNEL://</span>
-                    <input type="text" id="terminal-input" autofocus placeholder="Digite uma diretriz ou /arquivos..." autocomplete="off">
+                    <input type="text" id="terminal-input" autofocus placeholder="Digite uma diretriz..." autocomplete="off">
                 </div>
             </div>
         </div>
@@ -126,7 +121,7 @@
     <div id="tela-documento" class="escondido overlay-documento">
         <div class="pasta-recipiente">
             <div class="interface-header" style="color: #ffaa00; margin-bottom: 5px;">
-                > CRITICAL DATA OVERRIDE // VIEW_STREAM
+                > CRITICAL DATA OVERRIDE // DECRYPTED_SUCCESSFULLY
             </div>
             <div class="linha-decorativa"></div>
             <div id="conteudo-documento"></div>
@@ -137,29 +132,15 @@
         </div>
     </div>
 
-    <!-- TELA DO MENU SECRETO DE LOGS DECRYPTADOS -->
-    <div id="tela-arquivos-menu" class="escondido overlay-documento">
-        <div class="pasta-recipiente" style="border-color: #00ffcc; background-color: #051210;">
-            <div class="interface-header" style="color: #00ffcc; margin-bottom: 5px;">
-                > BANCO DE MEMÓRIAS RECUPERADAS // DR. ELENA VAZ
-            </div>
-            <div class="linha-decorativa" style="border-color: rgba(0, 255, 204, 0.2);"></div>
-            <div id="lista-arquivos-desbloqueados" style="display:flex; flex-direction:column; gap:10px; max-height:280px; overflow-y:auto; padding-right:5px;">
-                <!-- Injetado dinamicamente via JS -->
-            </div>
-            <div class="linha-decorativa" style="border-color: rgba(0, 255, 204, 0.2);"></div>
-            <button class="btn-fechar-doc" style="border-color: #00ffcc !important; color: #00ffcc !important;" onclick="fecharMenuArquivos()">
-                > SAIR_DO_BANCO_DE_DADOS()
-            </button>
-        </div>
-    </div>
-
+    <!-- Carregamento Modular Estrito de Scripts -->
     <script src="diarios.js"></script>
-    <script src="eventos.js"></script>
-    <script src="finais.js"></script>
-    <script src="clima.js"></script>
+    <script src="eventos_dias1_5.js"></script>
+    <script src="eventos_dias6_10.js"></script>
+    <script src="eventos_dias11_15.js"></script>
     <script src="sanidade.js"></script>
     <script src="minijogos.js"></script>
+    <script src="clima.js"></script>
+    <script src="finais.js"></script>
     <script src="save.js"></script>
     <script src="engine_core.js"></script>
     <script src="engine_narrativa.js"></script>
